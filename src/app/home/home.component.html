@@ -1,0 +1,52 @@
+<!-- <app-note-card></app-note-card> -->
+
+<div class="dashboard">
+  <aside id="sidebar">
+    <div class="sidebar-title">
+      <h1>School Notes</h1>
+      <p>Version v1.0</p>
+    </div>
+
+    <button class="primary-btn btn-black">
+      <i class="bx bx-plus"></i>New Note
+    </button>
+
+    <nav>
+      <p class="primary-btn"><i class="bx bx-home"></i>Home</p>
+      <p class="primary-btn"><i class="bx bx-search"></i>Search</p>
+      <p class="primary-btn"><i class="bx bx-note"></i>All Notes</p>
+      <p class="primary-btn"><i class="bx bx-book-alt"></i>Subjects</p>
+    </nav>
+  </aside>
+
+  <section id="content-area">
+    <section id="header">
+      <div class="search-bar">
+        <input type="search" placeholder="Search notes" />
+        <i class="placeholder-icon bx bx-search"></i>
+
+        <button class="primary-btn btn-black" type="submit">
+          <i class="bx bx-search"></i>
+        </button>
+      </div>
+
+      <div id="clock">
+        <span class="time">12:45PM |</span>
+        <div class="date">
+          <span>07 NOV</span>
+          <span>2024</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="subject-cards">
+      <div class="subject-card" *ngFor="let _ of [].constructor(5)">
+        {{ "Maths" | truncate }}
+      </div>
+    </section>
+
+    <section id="note-cards">
+      <app-note-card *ngFor="let _ of [].constructor(4)"></app-note-card>
+    </section>
+  </section>
+</div>

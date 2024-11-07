@@ -1,0 +1,20 @@
+.note-card {
+  padding: 2rem;
+  background-color: var(--white);
+  color: var(--primary-color);
+
+  p {
+    color: var(--light-grey);
+
+    .subject {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 0.875rem;
+    font-family: "Noto Color Emoji", "Inter";
+  }
+}
