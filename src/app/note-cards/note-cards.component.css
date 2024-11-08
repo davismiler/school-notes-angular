@@ -1,0 +1,29 @@
+#note-cards {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1.25rem;
+
+  .note-card {
+    padding: 2rem;
+    background-color: var(--white);
+    color: var(--primary-color);
+    cursor: pointer;
+
+    p {
+      font-size: 0.875rem;
+      color: var(--light-grey);
+
+      .subject {
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 0.875rem;
+      font-family: "Noto Color Emoji", "Inter";
+    }
+  }
+}
