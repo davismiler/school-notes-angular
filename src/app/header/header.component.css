@@ -60,6 +60,10 @@
       justify-content: center;
     }
   }
+
+  .sidebar {
+    display: none;
+  }
 }
 
 /* Responsive */
@@ -72,6 +76,11 @@
 /* `xl` applies to large devices 
 (desktops, less than 1200px) */
 @media (max-width: 74.999em) {
+  #header {
+    app-sidebar {
+      display: none;
+    }
+  }
 }
 
 /* `lg` applies to medium devices 

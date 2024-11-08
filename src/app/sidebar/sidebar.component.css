@@ -1,9 +1,10 @@
-#sidebar {
+.sidebar {
   flex: 1;
   max-width: 28rem;
   padding: 5rem;
   background-color: var(--white);
   height: 100%;
+
   .sidebar-title {
     color: var(--black);
 
@@ -50,16 +51,13 @@
 /* `xxl` applies to x-large devices 
 (large desktops, less than 1400px) */
 @media (max-width: 87.499em) {
-  #sidebar {
-    padding: 3em;
-  }
 }
 
 /* `xl` applies to large devices 
   (desktops, less than 1200px) */
 @media (max-width: 74.999em) {
-  #sidebar {
-    display: none;
+  .sidebar {
+    padding: 2.5em;
   }
 }
 
