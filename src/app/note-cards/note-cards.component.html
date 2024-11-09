@@ -1,13 +1,12 @@
-
-  <div class="note-card">
-    <p>
-      <span class="subject" style="color: {{ Note.color }}">{{
-        Note.subject
-      }}</span>
-      |
-      <span class="time">{{ Note.time }}</span>
-      |
-      <span class="date">{{ Note.date }}</span>
-    </p>
-    <h2>{{ Note.title }}</h2>
-  </div>
+<div class="note-card">
+  <p>
+    <span class="subject" style="color: {{ Note.color }}">{{
+      Note.subject
+    }}</span>
+    |
+    <span class="time">{{ Note.time }}</span>
+    |
+    <span class="date">{{ Note.date }}</span>
+  </p>
+  <h2 [routerLink]="['/note', Note.id]">{{ Note.title }}</h2>
+</div>
