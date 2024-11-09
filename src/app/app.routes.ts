@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ViewNoteComponent } from './view-note/view-note.component';
+import { NewNoteComponent } from './new-note/new-note.component';
 
 export const routes: Routes = [
   {
@@ -13,4 +14,9 @@ export const routes: Routes = [
     component: ViewNoteComponent,
     title: 'Note',
   },
+  {
+    path: 'new',
+    component: NewNoteComponent,
+    title: "New Note"
+  }
 ];
