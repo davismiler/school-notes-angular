@@ -19,12 +19,12 @@
 
   button {
     width: 100%;
-    margin-top: 2rem;
-    padding: 1rem 1.5rem;
+    margin-top: 2em;
+    padding: 1em 1.5em;
 
     i {
       font-size: 1.5rem;
-      margin-right: 0.75rem;
+      margin-right: 0.75em;
     }
   }
 
@@ -40,7 +40,7 @@
 
       i {
         font-size: 1.5rem;
-        margin-right: 0.75rem;
+        margin-right: 0.75em;
       }
     }
   }
@@ -58,6 +58,16 @@
 @media (max-width: 74.999em) {
   .sidebar {
     padding: 2.5em;
+    
+    .sidebar-title {
+      h1 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 }
 

@@ -1,11 +1,15 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NotecardInterface } from '../interfaces/notecard-interface';
 
 @Component({
   selector: 'app-note-cards',
   standalone: true,
-  imports: [NgFor],
+  imports: [],
   templateUrl: './note-cards.component.html',
   styleUrl: './note-cards.component.css',
 })
-export class NoteCardsComponent {}
+export class NoteCardsComponent {
+
+  @Input() Note!:NotecardInterface;
+}
+ 

@@ -1,5 +1,6 @@
 #header {
   display: flex;
+  gap: 0.75rem;
 
   #search-bar {
     display: flex;
@@ -60,10 +61,6 @@
       justify-content: center;
     }
   }
-
-  .sidebar {
-    display: none;
-  }
 }
 
 /* Responsive */
@@ -76,11 +73,6 @@
 /* `xl` applies to large devices 
 (desktops, less than 1200px) */
 @media (max-width: 74.999em) {
-  #header {
-    app-sidebar {
-      display: none;
-    }
-  }
 }
 
 /* `lg` applies to medium devices 
@@ -104,12 +96,6 @@
 (portrait phones, less than 576px) */
 @media (max-width: 35.999em) {
   #header {
-    flex-direction: column-reverse;
-
-    #search-bar {
-      flex: unset;
-    }
-
     #clock {
       display: none;
     }

@@ -1,10 +1,22 @@
-
 <div id="dashboard">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [class.open]="!isMenuOpen"></app-sidebar>
 
   <section id="content-area">
-    <app-header></app-header>
+    <app-header>
+      <div id="menu-btn" class="primary-btn btn-black" (click)="toggleMenu()">
+        <i class="bx bx-menu"></i>
+      </div>
+    </app-header>
+
+    <button class="primary-btn btn-black new-note-btn">
+      <i class="bx bx-plus"></i>
+      New Note
+    </button>
+
     <app-subject-cards></app-subject-cards>
-    <app-note-cards></app-note-cards>
+
+    <section id="note-cards">
+      <app-note-cards *ngFor="let note of notes" [Note]="note"></app-note-cards>
+    </section>
   </section>
 </div>

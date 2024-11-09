@@ -1,13 +1,39 @@
 #dashboard {
-  display: flex;
   background-color: #eee;
+  overflow-x: hidden;
+  display: flex;
 
   #content-area {
-    flex: 5;
+    flex: 2;
+    position: relative;
     padding: 5em;
+
+    #note-cards {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 1.25rem;
+    }
+  }
+
+  #menu-btn {
+    display: none;
+    width: 3rem;
+    z-index: 100;
+
+    i {
+      font-size: 2rem;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .new-note-btn {
+    display: none;
   }
 }
-
 /* Responsive */
 
 /* `xxl` applies to x-large devices 
@@ -19,21 +45,43 @@
 (desktops, less than 1200px) */
 @media (max-width: 74.999em) {
   #dashboard {
-  
     #content-area {
-      flex: 5;
       padding: 2.5em;
+      width: 100%;
     }
   }
-
 }
 
 /* `lg` applies to medium devices 
 (tablets, less than 992px) */
 @media (max-width: 61.999em) {
   #dashboard {
+    #menu-btn {
+      display: block;
+    }
+
     app-sidebar {
-      display: none;
+      position: absolute;
+      z-index: 99;
+      height: 100%;
+      transition: 500ms;
+
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+        rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
+      &.open {
+        transform: translateX(-100%);
+      }
+    }
+
+    .new-note-btn {
+      display: inherit;
+      width: 100%;
+      padding: 1em;
+      border: 0;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
     }
   }
 }
