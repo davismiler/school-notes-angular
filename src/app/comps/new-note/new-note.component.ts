@@ -3,22 +3,16 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SubjectInterface } from '../../core/interfaces/subject-interface';
 import { noteService } from '../../core/services/note.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-new-note',
   standalone: true,
-  imports: [RouterLink, NgIf ,LowerCasePipe],
+  imports: [RouterLink, NgIf, LowerCasePipe, FormsModule, ReactiveFormsModule],
   templateUrl: './new-note.component.html',
   styleUrl: './new-note.component.css',
 })
 export class NewNoteComponent {
-  // @ViewChild('subjectlist') mySelect!: ElementRef;
-
-  // getSelectedValue(): void {
-  //   const selectedValue = this.mySelect.nativeElement.value;
-  //   console.log('Selected value:', selectedValue);
-  // }
-
   noteService: noteService = inject(noteService);
   subjectList: SubjectInterface[] = [];
 
@@ -26,9 +20,19 @@ export class NewNoteComponent {
     this.subjectList = this.noteService.getAllSubjects();
   }
 
-  isOpenNewCategory: boolean = !false;
+  isVisible: boolean = !false;
+  showToggle() {
+    this.isVisible = !this.isVisible;
+  }
 
-  showOpenNewCategory() {
-    this.isOpenNewCategory = !this.isOpenNewCategory;
+  onCategorySubmit(e: any) {
+    console.log(e.value);
+
+    this.noteService.addNewSubject({
+      id: 10,
+      name: e.value.name,
+      color: e.value.color,
+    });
+    
   }
 }

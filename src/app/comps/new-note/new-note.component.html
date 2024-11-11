@@ -7,13 +7,14 @@
 </button>
 
 <div class="content-wrapper">
-  <form action="">
+  
+  <form action="" #newNoteForm>
     <h1 class="note-heading">
       <textarea rows="1" placeholder="Note Title" maxlength="50"></textarea>
     </h1>
 
-    <div class="category" *ngIf="!isOpenNewCategory" #newNoteForm>
-      <select name="subject" #subjectlist>
+    <div class="category" *ngIf="!isVisible">
+      <select name="subject">
         <option value="none">Choose a Subject</option>
 
         @for (subject of subjectList; track subject.id) {
@@ -29,21 +30,36 @@
       <button
         type="button"
         class="primary-btn btn-black"
-        (click)="showOpenNewCategory()"
+        (click)="showToggle()"
       >
         <i class="bx bx-plus"></i>
       </button>
     </div>
 
-    <form action="" #newCategoryForm>
-      <div class="new-category" *ngIf="isOpenNewCategory">
-        <input type="color" name="subjectColor" value="#022AFF" />
-        <input type="text" placeholder="Enter subject name" />
-        <button class="primary-btn btn-black" type="button">
-          <i class="bx bx-check" (click)="showOpenNewCategory()"></i>
+    <form (ngSubmit)="onCategorySubmit(newCategoryF)" #newCategoryF="ngForm">
+      <div class="new-category" *ngIf="isVisible">
+        <input type="color" name="color" value="#022AFF" ngModel />
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter subject name"
+          ngModel
+        />
+
+        <button
+          class="primary-btn btn-black"
+          type="submit"
+          (click)="showToggle()"
+        >
+          <i class="bx bx-check"></i>
         </button>
-        <button class="primary-btn btn-black" type="button">
-          <i class="bx bx-x" (click)="showOpenNewCategory()"></i>
+
+        <button
+          class="primary-btn btn-black"
+          type="button"
+          (click)="showToggle()"
+        >
+          <i class="bx bx-x"></i>
         </button>
       </div>
     </form>

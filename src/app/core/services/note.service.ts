@@ -215,5 +215,9 @@ export class noteService {
   getAllSubjects(): SubjectInterface[] {
     return this.subjectList;
   }
+
+  addNewSubject(obj: SubjectInterface): void {
+    this.subjectList.push(obj);
+  }
   
 }
