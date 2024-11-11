@@ -6,5 +6,4 @@ export interface NotecardInterface {
   content: string;
   date: string;
   time: string;
-  is_favourite: boolean;
 }

@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class TruncatePipe implements PipeTransform {
-  transform(value: string, maxLength: number = 15): string {
+  transform(value: string, maxLength: number = 12): string {
     if (!value || value.length <= maxLength) {
       return value;
     }

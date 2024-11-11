@@ -33,6 +33,13 @@
   .new-note-btn {
     display: none;
   }
+
+  #subject-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 3fr));
+    grid-gap: 0.5rem;
+    margin-top: 3rem;
+  }  
 }
 /* Responsive */
 
@@ -94,4 +101,7 @@
 /* `sm` applies to x-small devices 
 (portrait phones, less than 576px) */
 @media (max-width: 35.999em) {
+  #subject-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

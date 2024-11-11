@@ -1,0 +1,35 @@
+<button class="primary-btn btn-black back-btn" [routerLink]="'/'">
+  <i class="bx bx-chevron-left"></i>
+</button>
+
+<div class="content-wrapper">
+  <form action="">
+    <h1 class="note-heading">
+      <textarea rows="1" placeholder="Note Title" maxlength="50"></textarea>
+    </h1>
+
+    <div class="category" *ngIf="!isOpenNewCategory">
+      <select name="subject" #subjectlist>
+        <option value="none">Choose a Subject</option>
+        <option value="maths">Maths</option>
+        <option value="biology">Biology</option>
+      </select>
+
+      <button type="button" class="primary-btn btn-black" (click)="showOpenNewCategory()"><i class="bx bx-plus"></i></button>
+    </div>
+      
+      <div class="new-category" *ngIf="isOpenNewCategory">
+        <input type="text" placeholder="Enter subject name">
+        <button class="primary-btn btn-black" type="button"><i class="bx bx-check" (click)="showOpenNewCategory()"></i></button>
+        <button class="primary-btn btn-black" type="button"><i class="bx bx-x" (click)="showOpenNewCategory()"></i></button>
+      </div>
+
+
+    <p class="note-text">
+      <textarea
+        rows="25"
+        placeholder="Start writing your note here.."
+      ></textarea>
+    </p>
+  </form>
+</div>

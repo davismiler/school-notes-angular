@@ -1,19 +1,13 @@
-#subject-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 3fr));
-  grid-gap: 0.5rem;
-  margin-top: 3rem;
 
   .subject-card {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--white);
-    background-color: orangered;
     padding: 0.75em 2em;
     text-align: center;
     width: 100%;
   }
-}
+
 
 /* Responsive */
 
@@ -30,11 +24,9 @@
 /* `lg` applies to medium devices 
 (tablets, less than 992px) */
 @media (max-width: 61.999em) {
-  #subject-cards {
     .subject-card {
       font-size: 1rem;
     }
-  }
 }
 
 /* `md` applies to small devices 
@@ -45,7 +37,4 @@
 /* `sm` applies to x-small devices 
 (portrait phones, less than 576px) */
 @media (max-width: 35.999em) {
-  #subject-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }

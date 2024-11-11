@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ViewNoteComponent } from './view-note/view-note.component';
-import { NewNoteComponent } from './new-note/new-note.component';
+import { HomeComponent } from './comps/home/home.component';
+import { ViewNoteComponent } from './comps/view-note/view-note.component';
+import { NewNoteComponent } from './comps/new-note/new-note.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +17,6 @@ export const routes: Routes = [
   {
     path: 'new',
     component: NewNoteComponent,
-    title: "New Note"
-  }
+    title: 'New Note',
+  },
 ];

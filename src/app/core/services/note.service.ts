@@ -1,35 +1,43 @@
-import { Component } from '@angular/core';
-import { NoteCardsComponent } from '../note-cards/note-cards.component';
-import { SubjectCardsComponent } from '../subject-cards/subject-cards.component';
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { Injectable } from '@angular/core';
 import { NotecardInterface } from '../interfaces/notecard-interface';
-import { NgFor } from '@angular/common';
+import { SubjectInterface } from '../interfaces/subject-interface';
 
-@Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    SidebarComponent,
-    NoteCardsComponent,
-    SubjectCardsComponent,
-    NgFor
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+@Injectable({
+  providedIn: 'root',
 })
-export class HomeComponent {
-  // OPn & Close Sidebar on Mobile
-  isMenuOpen = false;
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-    console.log(this.isMenuOpen);
-  }
+export class noteService {
+  constructor() {}
 
-  // Note Cards
 
-  notes: NotecardInterface[] = [
+  protected subjectList: SubjectInterface[] = [
+    {
+      name: 'Biology',
+      color: '#4CAF50',
+      id: 1,
+    },
+    {
+      name: 'Computer Science',
+      color: '#2196F3',
+      id: 2,
+    },
+    {
+      name: 'Mathematics',
+      color: '#FF9800',
+      id: 3,
+    },
+    {
+      name: 'Astronomy',
+      color: '#9C27B0',
+      id: 4,
+    },
+    {
+      name: 'Economics',
+      color: '#795548',
+      id: 5,
+    },
+  ];
+
+  protected notesList: NotecardInterface[] = [
     {
       id: 1,
       subject: 'Biology',
@@ -43,8 +51,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '09:00',
-      color: '#4CAF50', // Green for Biology
-      is_favourite: false,
+      color: '#4CAF50',
     },
     {
       id: 2,
@@ -61,8 +68,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '10:00',
-      color: '#4CAF50', // Green for Biology
-      is_favourite: true,
+      color: '#4CAF50',
     },
     {
       id: 3,
@@ -79,8 +85,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '11:00',
-      color: '#2196F3', // Blue for Computer Science
-      is_favourite: false,
+      color: '#2196F3',
     },
     {
       id: 4,
@@ -97,8 +102,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '12:00',
-      color: '#2196F3', // Blue for Computer Science
-      is_favourite: true,
+      color: '#2196F3',
     },
     {
       id: 5,
@@ -114,8 +118,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '13:00',
-      color: '#FF9800', // Orange for Mathematics
-      is_favourite: false,
+      color: '#FF9800',
     },
     {
       id: 6,
@@ -131,8 +134,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '14:00',
-      color: '#FF9800', // Orange for Mathematics
-      is_favourite: true,
+      color: '#FF9800',
     },
     {
       id: 7,
@@ -149,8 +151,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '15:00',
-      color: '#9C27B0', // Purple for Astronomy
-      is_favourite: false,
+      color: '#9C27B0',
     },
     {
       id: 8,
@@ -164,8 +165,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '16:00',
-      color: '#9C27B0', // Purple for Astronomy
-      is_favourite: true,
+      color: '#9C27B0',
     },
     {
       id: 9,
@@ -182,8 +182,7 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '17:00',
-      color: '#795548', // Brown for Economics
-      is_favourite: false,
+      color: '#795548',
     },
     {
       id: 10,
@@ -201,8 +200,20 @@ export class HomeComponent {
       `,
       date: '2024-11-06',
       time: '18:00',
-      color: '#795548', // Brown for Economics
-      is_favourite: true,
+      color: '#795548',
     },
   ];
+
+  getAllNotes(): NotecardInterface[] {
+    return this.notesList;
+  }
+
+  getNoteById(id: Number): NotecardInterface | undefined {
+    return this.notesList.find((note) => note.id === id);
+  }
+
+  getAllSubjects(): SubjectInterface[] {
+    return this.subjectList;
+  }
+  
 }

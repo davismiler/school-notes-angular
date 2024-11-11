@@ -1,0 +1,31 @@
+<div id="dashboard">
+  <app-sidebar [class.open]="!isMenuOpen"></app-sidebar>
+
+  <section id="content-area">
+    <app-header>
+      <div id="menu-btn" class="primary-btn btn-black" (click)="toggleMenu()">
+        <i class="bx bx-menu"></i>
+      </div>
+    </app-header>
+
+    <button class="primary-btn btn-black new-note-btn" [routerLink]="'/new'">
+      <i class="bx bx-plus"></i>
+      New Note
+    </button>
+
+    <section id="subject-cards">
+      <app-subject-cards
+        *ngFor="let subject of subjectList"
+        [subjectName]="subject.name"
+        [subjectColor]="subject.color"
+      ></app-subject-cards>
+    </section>
+
+    <section id="note-cards">
+      <app-note-cards
+        *ngFor="let note of notesList"
+        [Note]="note"
+      ></app-note-cards>
+    </section>
+  </section>
+</div>
