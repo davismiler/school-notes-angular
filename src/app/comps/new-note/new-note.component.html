@@ -2,24 +2,20 @@
   <i class="bx bx-chevron-left"></i>
 </button>
 
-<button class="primary-btn btn-black control-btn save-btn" type="submit">
-  <i class="bx bx-check"></i> Save
-</button>
-
 <div class="content-wrapper">
   
-  <form action="" #newNoteForm>
+  <form (ngSubmit)="onNewNoteSubmit()">
     <h1 class="note-heading">
-      <textarea rows="1" placeholder="Note Title" maxlength="50"></textarea>
+      <textarea rows="1" placeholder="Note Title" maxlength="50" [formControl]="title"></textarea>
     </h1>
 
     <div class="category" *ngIf="!isVisible">
-      <select name="subject">
-        <option value="none">Choose a Subject</option>
+      <select name="subject" [formControl]="subject" [(ngModel)]="selectedSubject">
+        <option disabled value="">Choose a Subject</option>
 
         @for (subject of subjectList; track subject.id) {
         <option
-          [value]="subject.name | lowercase"
+          [value]="subject.name"
           [style.color]="subject.color"
         >
           {{ subject.name }}
@@ -68,7 +64,12 @@
       <textarea
         rows="25"
         placeholder="Start writing your note here.."
+        [formControl]="content"
       ></textarea>
     </p>
+
+    <button class="primary-btn btn-black control-btn save-btn" type="submit">
+      <i class="bx bx-check"></i> Save
+    </button>
   </form>
 </div>

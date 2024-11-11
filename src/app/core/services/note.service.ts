@@ -8,7 +8,6 @@ import { SubjectInterface } from '../interfaces/subject-interface';
 export class noteService {
   constructor() {}
 
-
   protected subjectList: SubjectInterface[] = [
     {
       name: 'Biology',
@@ -205,19 +204,26 @@ export class noteService {
   ];
 
   getAllNotes(): NotecardInterface[] {
-    return this.notesList;
+    return this.notesList.reverse();
   }
 
   getNoteById(id: Number): NotecardInterface | undefined {
     return this.notesList.find((note) => note.id === id);
   }
 
+  addNote(obj: NotecardInterface): void {
+    this.notesList.push(obj);
+  }
+
   getAllSubjects(): SubjectInterface[] {
     return this.subjectList;
   }
 
-  addNewSubject(obj: SubjectInterface): void {
+  getSubjectColorByName(name: any) {
+    return this.subjectList.find(subject => subject.name === name)?.color;
+  }
+
+  addSubject(obj: SubjectInterface): void {
     this.subjectList.push(obj);
   }
-  
 }
