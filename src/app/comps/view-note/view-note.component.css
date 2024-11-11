@@ -4,7 +4,7 @@ button {
 }
 
 button.back-btn {
-    position: absolute;
+    position: fixed;
     top: 3rem;
     left: 3rem;
 }

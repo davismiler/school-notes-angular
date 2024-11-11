@@ -1,11 +1,13 @@
-import { NgIf } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { LowerCasePipe, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SubjectInterface } from '../../core/interfaces/subject-interface';
+import { noteService } from '../../core/services/note.service';
 
 @Component({
   selector: 'app-new-note',
   standalone: true,
-  imports: [RouterLink, NgIf],
+  imports: [RouterLink, NgIf ,LowerCasePipe],
   templateUrl: './new-note.component.html',
   styleUrl: './new-note.component.css',
 })
@@ -17,7 +19,14 @@ export class NewNoteComponent {
   //   console.log('Selected value:', selectedValue);
   // }
 
-  isOpenNewCategory: boolean = false;
+  noteService: noteService = inject(noteService);
+  subjectList: SubjectInterface[] = [];
+
+  constructor() {
+    this.subjectList = this.noteService.getAllSubjects();
+  }
+
+  isOpenNewCategory: boolean = !false;
 
   showOpenNewCategory() {
     this.isOpenNewCategory = !this.isOpenNewCategory;

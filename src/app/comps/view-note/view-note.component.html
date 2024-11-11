@@ -5,7 +5,10 @@
 <div class="content-wrapper">
   <div class="note-helpers">
     <div class="note-breadcrumb">
-      <p><span style="color: {{ note?.color }}">{{note?.subject}}</span> &gt; {{ note?.id }}. {{note?.title}}</p>
+      <p>
+        <span [style.color]="note?.color">{{ note?.subject }}</span> &gt;
+        {{ note?.id }}. {{ note?.title }}
+      </p>
     </div>
 
     <div class="note-btns">
@@ -22,7 +25,7 @@
     </div>
   </div>
 
-  <h1 class="note-heading">{{note?.title}}</h1>
+  <h1 class="note-heading">{{ note?.title }}</h1>
 
   <p class="note-text">
     {{ note?.content }}

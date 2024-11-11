@@ -1,5 +1,9 @@
-<button class="primary-btn btn-black back-btn" [routerLink]="'/'">
+<button class="primary-btn btn-black control-btn back-btn" [routerLink]="'/'">
   <i class="bx bx-chevron-left"></i>
+</button>
+
+<button class="primary-btn btn-black control-btn save-btn" type="submit">
+  <i class="bx bx-check"></i> Save
 </button>
 
 <div class="content-wrapper">
@@ -8,22 +12,41 @@
       <textarea rows="1" placeholder="Note Title" maxlength="50"></textarea>
     </h1>
 
-    <div class="category" *ngIf="!isOpenNewCategory">
+    <div class="category" *ngIf="!isOpenNewCategory" #newNoteForm>
       <select name="subject" #subjectlist>
         <option value="none">Choose a Subject</option>
-        <option value="maths">Maths</option>
-        <option value="biology">Biology</option>
+
+        @for (subject of subjectList; track subject.id) {
+        <option
+          [value]="subject.name | lowercase"
+          [style.color]="subject.color"
+        >
+          {{ subject.name }}
+        </option>
+        }
       </select>
 
-      <button type="button" class="primary-btn btn-black" (click)="showOpenNewCategory()"><i class="bx bx-plus"></i></button>
+      <button
+        type="button"
+        class="primary-btn btn-black"
+        (click)="showOpenNewCategory()"
+      >
+        <i class="bx bx-plus"></i>
+      </button>
     </div>
-      
-      <div class="new-category" *ngIf="isOpenNewCategory">
-        <input type="text" placeholder="Enter subject name">
-        <button class="primary-btn btn-black" type="button"><i class="bx bx-check" (click)="showOpenNewCategory()"></i></button>
-        <button class="primary-btn btn-black" type="button"><i class="bx bx-x" (click)="showOpenNewCategory()"></i></button>
-      </div>
 
+    <form action="" #newCategoryForm>
+      <div class="new-category" *ngIf="isOpenNewCategory">
+        <input type="color" name="subjectColor" value="#022AFF" />
+        <input type="text" placeholder="Enter subject name" />
+        <button class="primary-btn btn-black" type="button">
+          <i class="bx bx-check" (click)="showOpenNewCategory()"></i>
+        </button>
+        <button class="primary-btn btn-black" type="button">
+          <i class="bx bx-x" (click)="showOpenNewCategory()"></i>
+        </button>
+      </div>
+    </form>
 
     <p class="note-text">
       <textarea

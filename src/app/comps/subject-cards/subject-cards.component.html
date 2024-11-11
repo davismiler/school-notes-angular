@@ -1,5 +1,3 @@
-
-  <div class="subject-card" style="background-color: {{ color }};">
-    {{ name | truncate }}
-  </div>
-
+<div class="subject-card" [style.backgroundColor]="color">
+  {{ name | truncate }}
+</div>
