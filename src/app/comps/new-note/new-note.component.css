@@ -1,4 +1,3 @@
-
 button.control-btn {
   position: fixed;
   padding: 0.5em;
@@ -16,6 +15,11 @@ button.back-btn {
 button.save-btn {
   top: 3rem;
   right: 3rem;
+  padding-inline: 1em !important;
+
+  i {
+    margin-right: 0.25em;
+  }
 }
 
 .content-wrapper {
@@ -58,7 +62,7 @@ button.save-btn {
       font-size: 1rem;
       font-family: inherit;
       padding: 0.5em 1em;
-      outline: 0;   
+      outline: 0;
       cursor: pointer;
       color: var(--dark-grey);
     }
@@ -83,7 +87,7 @@ button.save-btn {
     font-family: inherit;
     padding: 0.5em 1em;
     outline: 0;
-    
+
     &::placeholder {
       color: var(--dark-grey);
     }
@@ -120,9 +124,9 @@ button.save-btn {
 /* `xl` applies to large devices 
 (desktops, less than 1200px) */
 @media (max-width: 74.999em) {
-    .content-wrapper {
-        width: 60%;
-    }
+  .content-wrapper {
+    width: 60%;
+  }
 }
 
 /* `lg` applies to medium devices 
@@ -133,24 +137,24 @@ button.save-btn {
 /* `md` applies to small devices 
 (landscape phones, less than 768px) */
 @media (max-width: 47.999em) {
-    button {
-        padding: 0.5em;
-    }
+  button {
+    padding: 0.5em;
+  }
 
-    .content-wrapper {
-        width: 90%;
-        margin-top: 5rem;
-    }
+  .content-wrapper {
+    width: 90%;
+    margin-top: 5rem;
+  }
 
-    button.back-btn {
-        top: 1.5rem;
-        left: 1.5rem;
-    }
+  button.back-btn {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
 
-    button.save-btn {
-      top: 1.5rem;
-      right: 1.5rem; 
-    }
+  button.save-btn {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
 }
 
 /* `sm` applies to x-small devices 
