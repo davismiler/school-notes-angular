@@ -2,13 +2,13 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { SubjectInterface } from '../../core/interfaces/subject-interface';
 import { noteService } from '../../core/services/note.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategorySettingsComponent } from '../category-settings/category-settings.component';
 
 @Component({
   selector: 'app-new-note',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, CategorySettingsComponent],
+  imports: [RouterLink, FormsModule ,ReactiveFormsModule, CategorySettingsComponent],
   templateUrl: './new-note.component.html',
   styleUrl: './new-note.component.css',
 })
