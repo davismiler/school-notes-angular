@@ -1,4 +1,4 @@
-<button class="primary-btn btn-black control-btn back-btn" [routerLink]="'/'">
+<button class="primary-btn btn-black control-btn left-action-btn" [routerLink]="'/'">
   <i class="bx bx-chevron-left"></i>
 </button>
 
@@ -30,14 +30,14 @@
 
       <button
         type="button"
-        class="primary-btn btn-black"
+        class="primary-btn btn-black control-btn"
         (click)="showToggle()"
       >
         <i class="bx bx-plus"></i>
       </button>
     </div>
 
-    <form (ngSubmit)="onCategorySubmit(newCategoryF)" #newCategoryF="ngForm">
+    <!-- <form (ngSubmit)="onCategorySubmit(newCategoryF)" #newCategoryF="ngForm">
       <div class="new-category" *ngIf="isVisible">
         <input type="color" name="color" value="#022AFF" ngModel />
         <input
@@ -63,7 +63,7 @@
           <i class="bx bx-x"></i>
         </button>
       </div>
-    </form>
+    </form> -->
 
     <p class="note-text">
       <textarea
@@ -74,7 +74,7 @@
       ></textarea>
     </p>
 
-    <button class="primary-btn btn-black control-btn save-btn" type="submit">
+    <button class="primary-btn btn-black control-btn right-action-btn" type="submit">
       <i class="bx bx-check"></i>
       Save
     </button>

@@ -1,26 +1,3 @@
-button.control-btn {
-  position: fixed;
-  padding: 0.5em;
-
-  i {
-    font-size: 1.5rem;
-  }
-}
-
-button.back-btn {
-  top: 3rem;
-  left: 3rem;
-}
-
-button.save-btn {
-  top: 3rem;
-  right: 3rem;
-  padding-inline: 1em !important;
-
-  i {
-    margin-right: 0.25em;
-  }
-}
 
 .content-wrapper {
   margin-top: 3rem;
@@ -29,7 +6,6 @@ button.save-btn {
 
   .note-heading textarea {
     font-size: clamp(2rem, 3vw, 4rem);
-    margin-top: 1.5rem;
     margin-bottom: 2rem;
     font-family: inherit;
     font-weight: 700;
@@ -66,52 +42,11 @@ button.save-btn {
       cursor: pointer;
       color: var(--dark-grey);
     }
-
-    button {
-      padding: 0.5em;
-
-      i {
-        font-size: 1.5rem;
-      }
-    }
   }
 
-  .new-category {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
 
-  input[type="text"] {
-    font-size: 1rem;
-    font-family: inherit;
-    padding: 0.5em 1em;
-    outline: 0;
 
-    &::placeholder {
-      color: var(--dark-grey);
-    }
-  }
 
-  input[type="color"] {
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background: none;
-    border: 0;
-    cursor: pointer;
-    height: 3.5em;
-    padding: 0;
-    width: 3.5em;
-  }
-
-  button {
-    padding: 0.5em;
-
-    i {
-      font-size: 1.5rem;
-    }
-  }
 }
 
 /* Responsive */
@@ -137,23 +72,11 @@ button.save-btn {
 /* `md` applies to small devices 
 (landscape phones, less than 768px) */
 @media (max-width: 47.999em) {
-  button {
-    padding: 0.5em;
-  }
+
 
   .content-wrapper {
     width: 90%;
     margin-top: 5rem;
-  }
-
-  button.back-btn {
-    top: 1.5rem;
-    left: 1.5rem;
-  }
-
-  button.save-btn {
-    top: 1.5rem;
-    right: 1.5rem;
   }
 }
 

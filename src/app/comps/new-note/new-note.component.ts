@@ -31,17 +31,6 @@ export class NewNoteComponent {
     this.subjectList = this.noteService.getAllSubjects();
   }
 
-  // Add New Subject using a Template Driven Form
-  onCategorySubmit(e: any) {
-    console.log(e.value);
-
-    // Add a new Subject
-    this.noteService.addSubject({
-      id: 10,
-      name: e.value.name,
-      color: e.value.color,
-    });
-  }
 
   // Add a New Note (Reactive Form)
 

@@ -1,1 +1,20 @@
-<p>category-settings works!</p>
+<form (ngSubmit)="onCategorySubmit(newCategoryF)" #newCategoryF="ngForm">
+  <div class="new-category">
+    <input type="color" name="color" value="#022AFF" ngModel />
+    <input
+      class="text-input"
+      type="text"
+      name="name"
+      placeholder="Enter subject name"
+      ngModel
+    />
+
+    <button class="primary-btn btn-black control-btn" type="submit">
+      <i class="bx bx-check"></i>
+    </button>
+
+    <button class="primary-btn btn-black control-btn" type="button">
+      <i class="bx bx-x"></i>
+    </button>
+  </div>
+</form>

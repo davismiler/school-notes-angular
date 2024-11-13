@@ -9,12 +9,9 @@
     position: relative;
 
     input[type="search"] {
+
       width: 100%;
-      font-family: inherit;
-      font-size: 1rem;
       padding: 0 3.5rem;
-      color: var(--light-grey);
-      border: 2px solid var(--light-grey);
 
       &:focus {
         outline: none;

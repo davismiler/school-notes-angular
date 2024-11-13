@@ -1,6 +1,20 @@
-<button class="primary-btn btn-black back-btn" [routerLink]="'/'">
+<button
+  class="primary-btn btn-black control-btn left-action-btn"
+  [routerLink]="'/'"
+>
   <i class="bx bx-chevron-left"></i>
 </button>
+
+<div class="note-btns right-action-btn">
+  <button class="primary-btn btn-black control-btn">
+    <i class="bx bx-trash-alt"></i>
+  </button>
+
+  <button class="primary-btn btn-black control-btn">
+    <i class="bx bx-edit"></i>
+  </button>
+</div>
+
 
 <div class="content-wrapper">
   <div class="note-helpers">
@@ -9,19 +23,6 @@
         <span [style.color]="note?.color">{{ note?.subject }}</span> &gt;
         {{ note?.id }}. {{ note?.title }}
       </p>
-    </div>
-
-    <div class="note-btns">
-      <button class="primary-btn btn-black">
-        <i class="bx bx-trash-alt"></i>
-      </button>
-
-      <button class="primary-btn btn-black">
-        <i class="bx bx-edit"></i>
-      </button>
-      <!-- <button class="primary-btn">
-        <i class="bx bxs-star"></i>
-      </button> -->
     </div>
   </div>
 

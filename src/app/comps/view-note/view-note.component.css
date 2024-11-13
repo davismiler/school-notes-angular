@@ -1,51 +1,35 @@
-button {
-    font-size: 1.5rem;
-    padding: 0.5em;
+.note-btns {
+  display: flex;
+  gap: 0.5rem;
 }
-
-button.back-btn {
-    position: fixed;
-    top: 3rem;
-    left: 3rem;
-}
-
 
 .content-wrapper {
-  
-    margin-top: 3rem;
-    width: 50%;
-    margin-inline: auto;
+  margin-top: 3rem;
+  width: 50%;
+  margin-inline: auto;
 
-    .note-helpers {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap-reverse;
-        justify-content: space-between;
+  .note-helpers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
 
-        .note-breadcrumb {
-            margin: auto 0;
-        }
-
-        .note-btns {
-            display: flex;
-            gap: 0.5rem;
-        }
+    .note-breadcrumb {
+      margin: auto 0;
     }
+  }
 
+  .note-heading {
+    font-size: clamp(2rem, 3vw, 4rem);
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
 
-    .note-heading {
-        font-size: clamp(2rem, 3vw, 4rem);
-        margin-top: 1.5rem;
-        margin-bottom: 2rem;
-
-    }
-  
-    .note-text {
+  .note-text {
     color: var(--dark-grey);
     line-height: 2;
   }
 }
-
 
 /* Responsive */
 
@@ -57,9 +41,9 @@ button.back-btn {
 /* `xl` applies to large devices 
 (desktops, less than 1200px) */
 @media (max-width: 74.999em) {
-    .content-wrapper {
-        width: 60%;
-    }
+  .content-wrapper {
+    width: 60%;
+  }
 }
 
 /* `lg` applies to medium devices 
@@ -70,20 +54,20 @@ button.back-btn {
 /* `md` applies to small devices 
 (landscape phones, less than 768px) */
 @media (max-width: 47.999em) {
-    button {
-        font-size: 1rem;
-        padding: 0.5em;
-    }
+  button {
+    font-size: 1rem;
+    padding: 0.5em;
+  }
 
-    .content-wrapper {
-        width: 90%;
-        margin-top: 5rem;
-    }
+  .content-wrapper {
+    width: 90%;
+    margin-top: 5rem;
+  }
 
-    button.back-btn {
-        top: 1.5rem;
-        left: 1.5rem;
-    }
+  button.back-btn {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
 }
 
 /* `sm` applies to x-small devices 
