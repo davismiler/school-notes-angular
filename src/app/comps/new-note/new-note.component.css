@@ -43,10 +43,6 @@
       color: var(--dark-grey);
     }
   }
-
-
-
-
 }
 
 /* Responsive */
@@ -72,8 +68,6 @@
 /* `md` applies to small devices 
 (landscape phones, less than 768px) */
 @media (max-width: 47.999em) {
-
-
   .content-wrapper {
     width: 90%;
     margin-top: 5rem;
