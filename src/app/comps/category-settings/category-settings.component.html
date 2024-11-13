@@ -1,24 +1,3 @@
-<form (ngSubmit)="onCategorySubmit(newCategoryF)" #newCategoryF="ngForm">
-  <div class="new-category">
-    <input type="color" name="color" value="#022AFF" ngModel />
-    <input
-      class="text-input"
-      type="text"
-      name="name"
-      placeholder="Enter subject name"
-      ngModel
-    />
-
-    <button class="primary-btn btn-black control-btn" type="submit">
-      <i class="bx bx-check"></i>
-    </button>
-
-    <button class="primary-btn btn-black control-btn" type="button">
-      <i class="bx bx-x"></i>
-    </button>
-  </div>
-</form>
-
 <details>
   <summary>
     <div class="primary-btn btn-black control-btn">
@@ -34,12 +13,32 @@
       <h1>My details modal</h1>
     </div>
     <div class="details-modal-content">
-      <p>
+      <!-- <p>
         You can click the "X" in the corner or click the overlay to close this
         modal. Something like this could be useful as a nice way to show
         additional information, but that's about as far as I would take it. It's
         just a nice way of styling the details element.
-      </p>
+      </p> -->
+
+
+            <!-- Add New Category Form -->
+            <form (ngSubmit)="onCategorySubmit(newCategoryF)" #newCategoryF="ngForm">
+              <div class="new-category">
+                <input type="color" name="color" [(ngModel)]="defaultColor" />
+                <input
+                  class="text-input"
+                  type="text"
+                  name="name"
+                  placeholder="Enter subject name"
+                  ngModel
+                />
+      
+                <button class="primary-btn btn-black control-btn" type="submit">
+                  <i class="bx bx-plus"></i>
+                </button>
+              </div>
+            </form>
+      
     </div>
   </div>
 </details>

@@ -13,7 +13,7 @@
       ></textarea>
     </h1>
 
-    <div class="category" *ngIf="!isVisible">
+    <div class="category">
       <select
         name="subject"
         [formControl]="subject"
@@ -28,42 +28,16 @@
         }
       </select>
 
-      <button
+      <!-- <button
         type="button"
         class="primary-btn btn-black control-btn"
         (click)="showToggle()"
       >
         <i class="bx bx-cog"></i>
-      </button>
+      </button> -->
+
+      <app-category-settings></app-category-settings>
     </div>
-
-    <!-- <form (ngSubmit)="onCategorySubmit(newCategoryF)" #newCategoryF="ngForm">
-      <div class="new-category" *ngIf="isVisible">
-        <input type="color" name="color" value="#022AFF" ngModel />
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter subject name"
-          ngModel
-        />
-
-        <button
-          class="primary-btn btn-black"
-          type="submit"
-          (click)="showToggle()"
-        >
-          <i class="bx bx-check"></i>
-        </button>
-
-        <button
-          class="primary-btn btn-black"
-          type="button"
-          (click)="showToggle()"
-        >
-          <i class="bx bx-x"></i>
-        </button>
-      </div>
-    </form> -->
 
     <p class="note-text">
       <textarea

@@ -1,26 +1,20 @@
-import { LowerCasePipe, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { SubjectInterface } from '../../core/interfaces/subject-interface';
 import { noteService } from '../../core/services/note.service';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CategorySettingsComponent } from '../category-settings/category-settings.component';
 
 @Component({
   selector: 'app-new-note',
   standalone: true,
-  imports: [RouterLink, NgIf, FormsModule, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, CategorySettingsComponent],
   templateUrl: './new-note.component.html',
   styleUrl: './new-note.component.css',
 })
 export class NewNoteComponent {
-  // Set default the selection
+  // Set default values for inputs
   selectedSubject = '';
-
-  // Toggle Visibility
-  isVisible: boolean = false;
-  showToggle() {
-    this.isVisible = !this.isVisible;
-  }
 
   // Note Service
   noteService: noteService = inject(noteService);
@@ -30,7 +24,6 @@ export class NewNoteComponent {
     // Get all subject in select menu
     this.subjectList = this.noteService.getAllSubjects();
   }
-
 
   // Add a New Note (Reactive Form)
 

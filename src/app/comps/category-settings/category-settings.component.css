@@ -4,7 +4,7 @@
   gap: 0.5rem;
 }
 
-/* // -------------- DETAILS MODAL */
+/* Modal Popup */
 
 .details-modal {
   background: #ffffff;
@@ -22,8 +22,6 @@
   display: flex;
   flex-direction: column;
 
-  /* // -------------- CLOSE */
-
   .details-modal-close {
     align-items: center;
     color: #111827;
@@ -33,14 +31,13 @@
     position: absolute;
     right: 0;
     top: 0;
+    cursor: pointer;
 
     i {
       padding: 1em;
       font-size: 1.5rem;
     }
   }
-
-  /* // -------------- TITLE */
 
   .details-modal-title {
     color: #111827;
@@ -56,8 +53,6 @@
     }
   }
 
-  /* // -------------- CONTENT */
-
   .details-modal-content {
     border-top: 1px solid #e0e0e0;
     padding: 2em;
@@ -65,8 +60,6 @@
     overflow: auto;
   }
 }
-
-/* // -------------- OVERLAY */
 
 .details-modal-overlay {
   transition: opacity 0.2s ease-out;
@@ -85,8 +78,6 @@
   }
 }
 
-/* // -------------- DETAILS */
-
 details {
   summary {
     list-style: none;
@@ -99,3 +90,4 @@ details {
     }
   }
 }
+/* Modal Popup End */

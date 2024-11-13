@@ -20,9 +20,4 @@ export const routes: Routes = [
     component: NewNoteComponent,
     title: 'New Note',
   },
-  {
-    path: 'categorySettings',
-    component: CategorySettingsComponent,
-    title: '(DELETE LATER) categorySettings',
-  },
 ];

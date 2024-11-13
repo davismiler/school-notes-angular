@@ -10,6 +10,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './category-settings.component.css',
 })
 export class CategorySettingsComponent {
+  // Set default values for inputs
+  defaultColor: string = '#0033FF';
+
+
   // Services
   noteService: noteService = inject(noteService);
 
@@ -24,4 +28,6 @@ export class CategorySettingsComponent {
       color: e.value.color,
     });
   }
+
+
 }
