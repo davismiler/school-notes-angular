@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { noteService } from '../../core/services/note.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { SubjectInterface } from '../../core/interfaces/subject-interface';
 
 @Component({
   selector: 'app-category-settings',
@@ -10,24 +11,56 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './category-settings.component.css',
 })
 export class CategorySettingsComponent {
-  // Set default values for inputs
-  defaultColor: string = '#0033FF';
-
-
   // Services
   noteService: noteService = inject(noteService);
 
-  // Add New Subject using a Template Driven Form
-  onCategorySubmit(e: any) {
-    console.log(e.value);
+  // Get All Subjects
+  subjectList: SubjectInterface[] = [];
 
+  constructor() {
+    this.subjectList = this.noteService.getAllSubjects();
+  }
+
+  defaultColor = '#000000';
+  // Add New Subject using a Template Driven Form
+  onAddNewCategory(e: any) {
+    
     // Add a new Subject
     this.noteService.addSubject({
-      id: 10,
+      id: this.subjectList.length + 1,
       name: e.value.name,
-      color: e.value.color,
+      color: e.value.color ?? this.defaultColor,
+      isEditing: false,
+    });
+    
+    console.log(e.value.color);
+    e.reset({
+      name: '',  
+      color: this.defaultColor,
     });
   }
 
+  // Category Table Inline CRUD Operations
 
+  subjectCopy!: SubjectInterface;
+
+  onEditCategory(subject: SubjectInterface) {
+    subject.isEditing = true;
+    this.subjectCopy = { ...subject };
+  }
+
+  onEditCategoryCancel(subject: SubjectInterface) {
+    subject.isEditing = false;
+    subject.name = this.subjectCopy.name;
+    subject.color = this.subjectCopy.color;
+  }
+
+  onUpdateCategory(subject: SubjectInterface) {
+    subject.isEditing = false;
+    this.noteService.updateSubject(subject);
+  }
+
+  onDeleteCategory(subjectID: number) {
+    this.noteService.deleteSubjectById(subjectID);
+  }
 }

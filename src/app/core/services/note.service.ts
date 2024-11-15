@@ -13,26 +13,31 @@ export class noteService {
       name: 'Biology',
       color: '#4CAF50',
       id: 1,
+      isEditing: false,
     },
     {
       name: 'Computer Science',
       color: '#2196F3',
       id: 2,
+      isEditing: false,
     },
     {
       name: 'Mathematics',
       color: '#FF9800',
       id: 3,
+      isEditing: false,
     },
     {
       name: 'Astronomy',
       color: '#9C27B0',
       id: 4,
+      isEditing: false,
     },
     {
       name: 'Economics',
       color: '#795548',
       id: 5,
+      isEditing: false,
     },
   ];
 
@@ -220,10 +225,20 @@ export class noteService {
   }
 
   getSubjectColorByName(name: any) {
-    return this.subjectList.find(subject => subject.name === name)?.color;
+    return this.subjectList.find((subject) => subject.name === name)?.color;
   }
 
   addSubject(obj: SubjectInterface): void {
     this.subjectList.push(obj);
+  }
+
+  updateSubject(obj: SubjectInterface) {
+    // IMPLEMENT THE LOGIC WITH DATABASE
+    console.log(obj);
+  }
+
+  deleteSubjectById(id: number): void {
+    // IMPLEMENT THE LOGIC WITH DATABASE
+    console.log(id);
   }
 }
