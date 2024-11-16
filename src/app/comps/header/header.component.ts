@@ -11,17 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
     // Clock
-
-    // time: string = '';
-
-    // updateClock() {
-    //   const now = new Date();
-    //   const hours = String(now.getHours()).padStart(2, "0");
-    //   const minutes = String(now.getMinutes()).padStart(2, "0");
-    
-    //   const timeString = `${hours}:${minutes}`;
-    //   this.time = timeString;
-    // }
     
     currentTime: string = '';
     currentDate: Date = new Date();
