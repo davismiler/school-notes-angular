@@ -6,6 +6,9 @@ import { SubjectInterface } from '../interfaces/subject-interface';
   providedIn: 'root',
 })
 export class noteService {
+  static getNoteById(noteId: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor() {}
 
   protected subjectList: SubjectInterface[] = [
@@ -208,6 +211,7 @@ export class noteService {
     },
   ];
 
+  // Note Services
   getAllNotes(): NotecardInterface[] {
     return this.notesList.reverse();
   }
@@ -220,6 +224,12 @@ export class noteService {
     this.notesList.push(obj);
   }
 
+  updateNote(obj: NotecardInterface): void {
+    console.log(obj);
+    // IMPLEMENT THE LOGIC WITH DATABASE
+  }
+
+  // Note Subject Services
   getAllSubjects(): SubjectInterface[] {
     return this.subjectList;
   }

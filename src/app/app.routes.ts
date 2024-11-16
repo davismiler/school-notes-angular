@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './comps/home/home.component';
 import { ViewNoteComponent } from './comps/view-note/view-note.component';
 import { NewNoteComponent } from './comps/new-note/new-note.component';
-import { CategorySettingsComponent } from './comps/category-settings/category-settings.component';
+import { EditNoteComponent } from './comps/edit-note/edit-note.component';
 
 export const routes: Routes = [
   {
@@ -20,4 +20,14 @@ export const routes: Routes = [
     component: NewNoteComponent,
     title: 'New Note',
   },
+  {
+    path: 'note/:id/edit',
+    component: EditNoteComponent,
+    // loadComponent: () => import('./comps/edit-note.component').then((c) => c.EditNoteComponent),
+    title: 'Edit'
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];

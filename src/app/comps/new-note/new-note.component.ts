@@ -8,7 +8,12 @@ import { CategorySettingsComponent } from '../category-settings/category-setting
 @Component({
   selector: 'app-new-note',
   standalone: true,
-  imports: [RouterLink, FormsModule ,ReactiveFormsModule, CategorySettingsComponent],
+  imports: [
+    RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
+    CategorySettingsComponent,
+  ],
   templateUrl: './new-note.component.html',
   styleUrl: './new-note.component.css',
 })

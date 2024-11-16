@@ -11,6 +11,7 @@ import { NotecardInterface } from '../../core/interfaces/notecard-interface';
   styleUrl: './view-note.component.css',
 })
 export class ViewNoteComponent {
+  // Get Note Details
   route: ActivatedRoute = inject(ActivatedRoute);
 
   noteService = inject(noteService);
