@@ -12,10 +12,10 @@
   <ng-content></ng-content>
 
   <div id="clock">
-    <span class="time">12:45PM |</span>
+    <span class="time">{{currentTime}}PM |</span>
     <div class="date">
-      <span>07 NOV</span>
-      <span>2024</span>
+      <span>{{ currentDate | date: 'dd MMM' | uppercase }}</span> <!-- 07 NOV -->
+      <span>{{ currentDate | date: 'yyyy' | uppercase }}</span> <!-- 2024 -->
     </div>
   </div>
 </section>

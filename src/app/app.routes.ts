@@ -23,11 +23,10 @@ export const routes: Routes = [
   {
     path: 'note/:id/edit',
     component: EditNoteComponent,
-    // loadComponent: () => import('./comps/edit-note.component').then((c) => c.EditNoteComponent),
-    title: 'Edit'
+    title: 'Edit Note',
   },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];

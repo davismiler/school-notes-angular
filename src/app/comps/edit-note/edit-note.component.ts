@@ -56,5 +56,7 @@ export class EditNoteComponent implements OnInit {
     // this.noteService.updateNote();
     this.router.navigate(['/']);
   }
+
+  titletest: string = "Test";
   
 }

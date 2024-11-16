@@ -42,4 +42,5 @@ export class HomeComponent {
     this.notesList = this.noteService.getAllNotes();
     this.subjectList = this.noteService.getAllSubjects();
   }
+  
 }
