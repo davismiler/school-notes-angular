@@ -2,7 +2,7 @@
   <app-sidebar [class.open]="!isMenuOpen"></app-sidebar>
 
   <section id="content-area">
-    <app-header>
+    <app-header (searchQuery)="filterNotes($event)">
       <div id="menu-btn" class="primary-btn btn-black" (click)="toggleMenu()">
         <i class="bx bx-menu"></i>
       </div>
@@ -23,7 +23,7 @@
 
     <section id="note-cards">
       <app-note-cards
-        *ngFor="let note of notesList"
+        *ngFor="let note of filteredNotesList"
         [Note]="note"
       ></app-note-cards>
     </section>

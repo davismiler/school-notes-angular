@@ -34,13 +34,30 @@ export class HomeComponent {
   // Note Cards
 
   notesList: NotecardInterface[] = [];
+  filteredNotesList: NotecardInterface[] = [];
   subjectList: SubjectInterface[] = [];
 
   noteService: noteService = inject(noteService);
 
   constructor() {
     this.notesList = this.noteService.getAllNotes();
+    this.filteredNotesList = this.notesList;
+
     this.subjectList = this.noteService.getAllSubjects();
   }
-  
+
+  // Search result filtering
+  filterNotes(text: string) {
+    if (!text) this.filteredNotesList = this.notesList;
+
+    console.log(text);
+    this.filteredNotesList = this.notesList.filter((note) =>
+      note?.title.toLowerCase().includes(text.toLowerCase())
+    );
+  }
+
+  testFunc(event: string) {
+    console.log(event);
+    
+  }
 }
