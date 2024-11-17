@@ -1,6 +1,6 @@
 <aside class="sidebar">
   <div class="sidebar-title">
-    <h1>School Notes</h1>
+    <h1 [routerLink]="'/'">School Notes</h1>
     <p>Version v1.0</p>
   </div>
 
@@ -10,7 +10,9 @@
   </button>
 
   <nav>
-    <p class="primary-btn"><i class="bx bx-home"></i>Home</p>
+    <p (click)="resetTrigger()" class="primary-btn">
+      <i class="bx bx-home"></i>Home
+    </p>
     <p class="primary-btn"><i class="bx bx-search"></i>Search</p>
     <p class="primary-btn"><i class="bx bx-note"></i>All Notes</p>
     <p class="primary-btn"><i class="bx bx-book-alt"></i>Subjects</p>

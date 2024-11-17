@@ -1,5 +1,8 @@
 <div id="dashboard">
-  <app-sidebar [class.open]="!isMenuOpen"></app-sidebar>
+  <app-sidebar
+    (resetFilterTrigger)="resetAllFilters()"
+    [class.open]="!isMenuOpen"
+  ></app-sidebar>
 
   <section id="content-area">
     <app-header (searchQuery)="filterNotes($event)">
@@ -13,13 +16,25 @@
       <i class="bx bx-plus"></i>
     </button>
 
+    @if (isVisible) {
     <section id="subject-cards">
       <app-subject-cards
         *ngFor="let subject of subjectList"
         [subjectName]="subject.name"
         [subjectColor]="subject.color"
+        (click)="filterNotesBySubject(subject)"
       ></app-subject-cards>
     </section>
+    } @else {
+    <section id="search-title">
+      <h2>
+        <i class="bx bx-search"></i>Search results for: "<span>{{
+          searchQuery
+        }}</span
+        >"
+      </h2>
+    </section>
+    }
 
     <section id="note-cards">
       <app-note-cards

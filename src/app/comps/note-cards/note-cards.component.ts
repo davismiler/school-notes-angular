@@ -11,4 +11,6 @@ import { RouterLink } from '@angular/router';
 })
 export class NoteCardsComponent {
   @Input() Note!: NotecardInterface;
+
+  
 }

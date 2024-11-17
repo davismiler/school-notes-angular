@@ -24,6 +24,8 @@ import { SubjectInterface } from '../../core/interfaces/subject-interface';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  isVisible: boolean = true;
+
   // Open & Close Sidebar on Mobile
   isMenuOpen = false;
   toggleMenu() {
@@ -47,17 +49,42 @@ export class HomeComponent {
   }
 
   // Search result filtering
-  filterNotes(text: string) {
-    if (!text) this.filteredNotesList = this.notesList;
 
-    console.log(text);
-    this.filteredNotesList = this.notesList.filter((note) =>
-      note?.title.toLowerCase().includes(text.toLowerCase())
-    );
+  searchQuery: string = '';
+
+  filterNotes(text: string) {
+    if (!text) {
+      this.isVisible = true;
+      this.filteredNotesList = this.notesList;
+    } else {
+      this.isVisible = false;
+      this.searchQuery = text;
+      this.filteredNotesList = this.notesList.filter((note) =>
+        note?.title.toLowerCase().includes(text.toLowerCase())
+      );
+    }
   }
 
-  testFunc(event: string) {
-    console.log(event);
-    
+  // Subject Card filtering
+
+  filterNotesBySubject(subject: SubjectInterface) {
+    // console.log(subject);
+    if (!subject) {
+      this.isVisible = true;
+      this.filteredNotesList = this.notesList;
+    } else {
+      this.isVisible = false;
+      this.searchQuery = subject.name;
+      this.filteredNotesList = this.notesList.filter(
+        (note) => note.subject === subject.name
+      );
+
+    }
+  }
+
+  // Reset all filters and redirect Home
+  resetAllFilters() {
+    this.isVisible = true;
+    this.filteredNotesList = this.notesList;
   }
 }

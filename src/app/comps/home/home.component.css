@@ -39,7 +39,25 @@
     grid-template-columns: repeat(auto-fit, minmax(13rem, 3fr));
     grid-gap: 0.5rem;
     margin-top: 3rem;
-  }  
+  }
+
+  #search-title {
+    margin-top: 3rem;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: var(--dark-grey);
+    }
+    
+    span {
+      font-style: italic;
+      color: var(--black);
+    }
+
+  }
 }
 /* Responsive */
 
