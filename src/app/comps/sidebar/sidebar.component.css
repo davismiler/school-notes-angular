@@ -10,7 +10,7 @@
     cursor: pointer;
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     p {
@@ -19,9 +19,10 @@
   }
 
   button {
-    width: 100%;
+    /* width: 100%; */
+    width: 250px;
     margin-top: 2em;
-    padding: 1em 1.5em;
+    padding: 0.8em 1.5em;
 
     i {
       font-size: 1.5rem;
@@ -34,13 +35,13 @@
     margin-top: 1rem;
 
     p {
-      padding: 1rem 1.5rem;
+      padding: 0.8rem 1.5rem;
       &:hover {
         background-color: #eee;
       }
 
       i {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         margin-right: 0.75em;
       }
     }
@@ -59,7 +60,7 @@
 @media (max-width: 74.999em) {
   .sidebar {
     padding: 2.5em;
-    
+
     .sidebar-title {
       h1 {
         font-size: 1.25rem;

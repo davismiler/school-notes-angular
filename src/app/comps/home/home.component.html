@@ -10,7 +10,7 @@
   <section id="content-area">
     <app-header (searchQuery)="filterNotes($event)" #headerComponent>
       <div id="menu-btn" class="primary-btn btn-black" (click)="toggleMenu()">
-        <i class="bx bx-menu"></i>
+        <i class="bx bx-menu" [class.bx-x]="isMenuOpen"></i>
       </div>
     </app-header>
 
