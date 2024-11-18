@@ -42,68 +42,6 @@ export class noteService {
       id: 5,
       isEditing: false,
     },
-
-
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
-    {
-      name: 'Economics',
-      color: '#795548',
-      id: 5,
-      isEditing: false,
-    },
   ];
 
   protected notesList: NotecardInterface[] = [

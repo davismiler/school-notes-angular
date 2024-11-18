@@ -19,13 +19,13 @@ import { SubjectInterface } from '../../core/interfaces/subject-interface';
     SubjectCardsComponent,
     NgFor,
     RouterLink,
-    SlicePipe
+    SlicePipe,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  MAX_NOTES_LIMIT = 9
+  MAX_NOTES_LIMIT = 9;
   notesCount = signal(this.MAX_NOTES_LIMIT);
   MAX_SUBJECTS_NO = 5;
   subjectsCount = signal(this.MAX_SUBJECTS_NO);
@@ -75,7 +75,6 @@ export class HomeComponent {
   // Subject Card filtering
 
   filterNotesBySubject(subject: SubjectInterface) {
-
     if (!subject) {
       this.isSubjectsVisible = true;
       this.filteredNotesList = this.notesList;
@@ -92,17 +91,17 @@ export class HomeComponent {
   // Reset all filters and redirect Home
   resetAllFilters() {
     this.isSubjectsVisible = true;
+    this.isNotesVisible = true;
     this.filteredNotesList = this.notesList;
-    this.isSubjectsVisible = true;
   }
 
   // Show all notes on Home
-  
+
   showAllNotes() {
     this.notesCount.set(1000);
     this.isNotesVisible = true;
   }
-  
+
   // Show all Subjects on Home
   showAllSubjects() {
     this.subjectsCount.set(100);
