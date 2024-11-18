@@ -10,11 +10,11 @@
   </button>
 
   <nav>
-    <p (click)="resetTrigger()" class="primary-btn">
+    <p (click)="onHomeClick()" class="primary-btn">
       <i class="bx bx-home"></i>Home
     </p>
-    <p class="primary-btn"><i class="bx bx-search"></i>Search</p>
-    <p class="primary-btn"><i class="bx bx-note"></i>All Notes</p>
-    <p class="primary-btn"><i class="bx bx-book-alt"></i>Subjects</p>
+    <p (click)="onSearchClick()" class="primary-btn"><i class="bx bx-search"></i>Search</p>
+    <p (click)="onAllNotesClick()" class="primary-btn"><i class="bx bx-note"></i>All Notes</p>
+    <p (click)="onSubjectsClick()" class="primary-btn"><i class="bx bx-book-alt"></i>Subjects</p>
   </nav>
 </aside>

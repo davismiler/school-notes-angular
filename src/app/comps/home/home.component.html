@@ -1,11 +1,14 @@
 <div id="dashboard">
   <app-sidebar
-    (resetFilterTrigger)="resetAllFilters()"
+    (sidebarHomeClick)="resetAllFilters()"
+    (sidebarSearchClick)="headerComponent.focusSearchInput()"
+    (sidebarAllNotesClick)="showAllNotes()"
+    (sidebarSubjectsClick)="showAllSubjects()"
     [class.open]="!isMenuOpen"
   ></app-sidebar>
 
   <section id="content-area">
-    <app-header (searchQuery)="filterNotes($event)">
+    <app-header (searchQuery)="filterNotes($event)" #headerComponent>
       <div id="menu-btn" class="primary-btn btn-black" (click)="toggleMenu()">
         <i class="bx bx-menu"></i>
       </div>
@@ -16,10 +19,10 @@
       <i class="bx bx-plus"></i>
     </button>
 
-    @if (isVisible) {
+    @if (isSubjectsVisible) {
     <section id="subject-cards">
       <app-subject-cards
-        *ngFor="let subject of subjectList"
+        *ngFor="let subject of subjectList | slice : 0 : subjectsCount()"
         [subjectName]="subject.name"
         [subjectColor]="subject.color"
         (click)="filterNotesBySubject(subject)"
@@ -28,19 +31,20 @@
     } @else {
     <section id="search-title">
       <h2>
-        <i class="bx bx-search"></i>Search results for: "<span>{{
+        <i class="bx bx-search"></i>Search results for:"<span>{{
           searchQuery
         }}</span
         >"
       </h2>
     </section>
-    }
-
+    } 
+    @if (isNotesVisible) {
     <section id="note-cards">
       <app-note-cards
-        *ngFor="let note of filteredNotesList"
+        *ngFor="let note of filteredNotesList | slice : 0 : notesCount()"
         [Note]="note"
       ></app-note-cards>
     </section>
+  }
   </section>
 </div>

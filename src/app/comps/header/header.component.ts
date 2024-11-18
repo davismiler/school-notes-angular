@@ -1,5 +1,12 @@
 import { DatePipe, UpperCasePipe } from '@angular/common';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -39,5 +46,14 @@ export class HeaderComponent implements OnInit {
 
   searchNote(text: string) {
     this.searchQuery.emit(text);
+  }
+
+  // Focus Search Input
+  @ViewChild('filter') searchInput!: ElementRef<HTMLInputElement>;
+
+  focusSearchInput(): void {
+    this.searchInput.nativeElement.focus();
+    
+    console.log('focusSearchInput ran!');
   }
 }
