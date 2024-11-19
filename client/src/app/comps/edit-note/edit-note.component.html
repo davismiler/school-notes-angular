@@ -1,0 +1,62 @@
+<button
+  class="primary-btn btn-black control-btn left-action-btn"
+  [routerLink]="'../'"
+>
+  <i class="bx bx-chevron-left"></i>
+</button>
+
+<div class="content-wrapper">
+  <form (ngSubmit)="onUpdateNoteSubmit()">
+    <h1 class="note-heading">
+      <textarea
+        rows="1"
+        placeholder="Note Title"
+        maxlength="50"
+        [formControl]="title"
+      ></textarea>
+    </h1>
+
+    <div class="category">
+      <select
+        name="subject"
+        [formControl]="subject"
+        [(ngModel)]="selectedSubject"
+      >
+        <option disabled value="">Choose a Subject</option>
+
+        @for (subject of subjectList; track subject.id) {
+        <option [value]="subject.name" [style.color]="subject.color">
+          {{ subject.name }}
+        </option>
+        }
+      </select>
+
+      <!-- <button
+        type="button"
+        class="primary-btn btn-black control-btn"
+        (click)="showToggle()"
+      >
+        <i class="bx bx-cog"></i>
+      </button> -->
+
+      <app-category-settings></app-category-settings>
+    </div>
+
+    <p class="note-text">
+      <textarea
+        required
+        rows="25"
+        placeholder="Start writing your note here.."
+        [formControl]="content"
+      ></textarea>
+    </p>
+
+    <button
+      class="primary-btn btn-black control-btn right-action-btn"
+      type="submit"
+    >
+      <i class="bx bx-check"></i>
+      Save
+    </button>
+  </form>
+</div>

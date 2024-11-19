@@ -1,0 +1,117 @@
+#header {
+  display: flex;
+  gap: 0.75rem;
+
+  .search-bar-bgoverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); 
+      pointer-events: none; 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+  }
+
+  &:focus-within .search-bar-bgoverlay {
+    opacity: 1; 
+  }
+
+  #search-bar {
+    display: flex;
+    flex: 1;
+    height: 3rem;
+    position: relative;
+    z-index: 10;
+
+
+    input[type="search"] {
+      width: 100%;
+      padding: 0 3.5rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .placeholder-icon {
+      position: absolute;
+      font-size: 1.25rem;
+      top: 0.8rem;
+      left: 1.8rem;
+      color: var(--light-grey);
+    }
+
+    button {
+      justify-content: center;
+      width: 4rem;
+      margin-left: 0.75rem;
+
+      i {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+    }
+  }
+
+  #clock {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .time {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .date {
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.75rem;
+      justify-content: center;
+    }
+  }
+}
+
+/* Responsive */
+
+/* `xxl` applies to x-large devices 
+(large desktops, less than 1400px) */
+@media (max-width: 87.499em) {
+}
+
+/* `xl` applies to large devices 
+(desktops, less than 1200px) */
+@media (max-width: 74.999em) {
+}
+
+/* `lg` applies to medium devices 
+(tablets, less than 992px) */
+@media (max-width: 61.999em) {
+  #header {
+    #clock {
+      .time {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+/* `md` applies to small devices 
+(landscape phones, less than 768px) */
+@media (max-width: 47.999em) {
+}
+
+/* `sm` applies to x-small devices 
+(portrait phones, less than 576px) */
+@media (max-width: 35.999em) {
+  #header {
+    #clock {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+
+  .subject-card {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+    padding: 0.75em 2em;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+  }
+
+
+/* Responsive */
+
+/* `xxl` applies to x-large devices 
+(large desktops, less than 1400px) */
+@media (max-width: 87.499em) {
+}
+
+/* `xl` applies to large devices 
+(desktops, less than 1200px) */
+@media (max-width: 74.999em) {
+}
+
+/* `lg` applies to medium devices 
+(tablets, less than 992px) */
+@media (max-width: 61.999em) {
+    .subject-card {
+      font-size: 1rem;
+    }
+}
+
+/* `md` applies to small devices 
+(landscape phones, less than 768px) */
+@media (max-width: 47.999em) {
+}
+
+/* `sm` applies to x-small devices 
+(portrait phones, less than 576px) */
+@media (max-width: 35.999em) {
+}
