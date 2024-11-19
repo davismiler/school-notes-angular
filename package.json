@@ -6,7 +6,7 @@
   "scripts": {
     "build:client": "cd client && ng build",
     "move:dist": "rm -rf server/dist && mv client/dist server/dist",
-    "start:build": "npm run build:client && npm run move:dist"
+    "build": "npm run build:client && npm run move:dist"
   },
   "author": "",
   "license": "ISC"
