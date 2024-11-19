@@ -4,7 +4,9 @@
   "description": "Simple MEAN Stack Application to save your school notes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:client": "cd client && ng build",
+    "move:dist": "rm -rf server/dist && mv client/dist server/dist",
+    "start:build": "npm run build:client && npm run move:dist"
   },
   "author": "",
   "license": "ISC"
