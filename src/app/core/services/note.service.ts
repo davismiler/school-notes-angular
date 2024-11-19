@@ -6,9 +6,7 @@ import { SubjectInterface } from '../interfaces/subject-interface';
   providedIn: 'root',
 })
 export class noteService {
-  static getNoteById(noteId: any) {
-    throw new Error('Method not implemented.');
-  }
+
   constructor() {}
 
   protected subjectList: SubjectInterface[] = [
