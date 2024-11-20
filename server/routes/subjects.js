@@ -33,7 +33,19 @@ router
 
     res.json(result);
   })
+  .put(async (req, res) => {
+    const subjectID = Number(req.params.id);
+    const filter = { id: subjectID };
 
+    const result = await myColl.updateOne(filter, {
+      $set: {
+        name: req.body.name,
+        color: req.body.color,
+      },
+    });
+
+    res.json({});
+  });
 
 module.exports = router;
 
