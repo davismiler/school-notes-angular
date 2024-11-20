@@ -2,12 +2,14 @@
   "name": "school-notes",
   "version": "1.0.0",
   "description": "Simple MEAN Stack Application to save your school notes.",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "build:client": "cd client && ng build",
-    "move:dist": "rm -rf server/dist && mv client/dist server/dist",
-    "build": "npm run build:client && npm run move:dist"
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "install": "install:client && install:server",
+    "build": "cd client && ng build"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "DevHanza",
+  "license": "ISC",
+  "dependencies": {}
 }
