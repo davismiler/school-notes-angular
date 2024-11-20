@@ -25,7 +25,6 @@ router
 router
   .route("/:id")
   .get(async (req, res) => {
-    // console.log(req.body);
     const subjectID = Number(req.params.id);
     const result = await subjectsCollection
       .find({ id: subjectID }, { projection: { _id: 0 } })
@@ -33,18 +32,19 @@ router
 
     res.json(result);
   })
+  // Update Subject
   .put(async (req, res) => {
     const subjectID = Number(req.params.id);
     const filter = { id: subjectID };
 
-    const result = await myColl.updateOne(filter, {
+    const result = await subjectsCollection.updateOne(filter, {
       $set: {
         name: req.body.name,
         color: req.body.color,
       },
     });
 
-    res.json({});
+    res.json({ result });
   });
 
 module.exports = router;
