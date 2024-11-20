@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const PORT = 8080;
 
+app.use(express.json());
+
 const conn = require("./db/connection.js");
 const db = conn.connectToDatabase();
-
 
 app.get("/", async (req, res) => {
   res.redirect("/api/v1/notes");

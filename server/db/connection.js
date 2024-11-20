@@ -2,6 +2,7 @@ const { MongoClient } = require("mongodb");
 
 const URI = process.env.MDB_URL;
 const client = new MongoClient(URI);
+
 const database = client.db("schoolnotes");
 
 const notesCollection = database.collection("notes");
