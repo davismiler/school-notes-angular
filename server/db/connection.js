@@ -1,27 +1,52 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient } = require("mongodb");
+
 const URI = process.env.MDB_URL;
+const client = new MongoClient(URI);
+const database = client.db("schoolnotes");
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const mdb = new MongoClient(URI, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+const notesCollection = database.collection("notes");
+const subjectsCollection = database.collection("subject");
 
-async function pingDB() {
+async function connectToDatabase() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await mdb.connect();
-    // Send a ping to confirm a successful connection
-    await mdb.db("admin").command({ ping: 1 });
-    console.log("\nPinged your MongoDB Server!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await mdb.close();
+    await client.connect();
+    console.log("Connected to MongoDB.");
+  } catch (error) {
+    console.error("Could not connect to MongoDB: ", error);
+    throw error;
   }
 }
-// pingDB().catch(console.dir);
 
-module.exports = { mdb, pingDB };
+module.exports = {
+  client,
+  database,
+  notesCollection,
+  subjectsCollection,
+  connectToDatabase,
+};
+
+// async function run() {
+//   try {
+//     // Connect to the "insertDB" database and access its collections
+//     const client = new MongoClient(URI);
+//     const database = client.db("schoolnotes");
+
+//     const notesCollection = database.collection("notes");
+//     const subjectCollection = database.collection("subject");
+
+//     // Create a document to insert
+//     const doc = {
+//       title: "Record of a Shriveled Datum",
+//       content: "No bytes, no problem. Just insert a document, in MongoDB",
+//     };
+//     // Insert the defined document into the "haiku" collection
+//     const result = await notesCollection.insertOne(doc);
+//     // Print the ID of the inserted document
+//     console.log(`A document was inserted with the _id: ${result.insertedId}`);
+//   } finally {
+//     // Close the MongoDB client connection
+//     await client.close();
+//   }
+// }
+// // Run the function and handle any errors
+// run().catch(console.dir);
