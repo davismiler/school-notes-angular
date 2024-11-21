@@ -10,15 +10,15 @@ router
 
   // Get All the Subjects
   .get(async (req, res) => {
-    const subjects = await subjectsCollection.find({}).toArray();
-    res.json(subjects);
+    const result = await subjectsCollection.find({}).toArray();
+    res.json(result);
   })
 
   // Create a new subject
   .post(async (req, res) => {
-    const subject = await subjectsCollection.insertOne(req.body);
-    res.status(201).json(subject);
-    res.json(subject);
+    const result = await subjectsCollection.insertOne(req.body);
+    res.json(req.body);
+    // res.json(subject);
   });
 
 // Get Subject by Id
@@ -43,8 +43,16 @@ router
         color: req.body.color,
       },
     });
+    res.json(req.body);
+  })
+  // Delete Subject by ID
+  .delete(async (req, res) => {
 
-    res.json({ result });
+    const subjectID = await Number(req.params.id);
+    const result = await subjectsCollection.deleteOne({ id: subjectID });
+    res.json({ "deleted": true });
+
+    // const result;
   });
 
 module.exports = router;
@@ -54,18 +62,13 @@ module.exports = router;
 //   "title": "Note Title",
 //   "content": "Lorem Ipsum..",
 //   "date": "2024-01-09",
-//   "time": "22:00"
+//   "time": "22:00",
 //   "subject": {
 //     "id": "ObjectId(3453453453)",
 //   },
 // }
 
-// {
-//   id: ObjectId(34534)
-//   name: "Maths",
-//   color: "Red",
-//   isEditing: false
-// }
+
 
 // MongoDB Query
 // [
