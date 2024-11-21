@@ -1,16 +1,16 @@
-import { Component, inject, signal, ViewChild } from '@angular/core';
-import { NgFor, SlicePipe } from '@angular/common';
-import { NoteCardsComponent } from '../note-cards/note-cards.component';
-import { SubjectCardsComponent } from '../subject-cards/subject-cards.component';
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { noteService } from '../../core/services/note.service';
-import { NotecardInterface } from '../../core/interfaces/notecard-interface';
-import { RouterLink } from '@angular/router';
-import { SubjectInterface } from '../../core/interfaces/subject-interface';
+import { Component, inject, signal, ViewChild } from "@angular/core";
+import { NgFor, SlicePipe } from "@angular/common";
+import { NoteCardsComponent } from "../note-cards/note-cards.component";
+import { SubjectCardsComponent } from "../subject-cards/subject-cards.component";
+import { HeaderComponent } from "../header/header.component";
+import { SidebarComponent } from "../sidebar/sidebar.component";
+import { noteService } from "../../core/services/note.service";
+import { NotecardInterface } from "../../core/interfaces/notecard-interface";
+import { RouterLink } from "@angular/router";
+import { SubjectInterface } from "../../core/interfaces/subject-interface";
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   standalone: true,
   imports: [
     HeaderComponent,
@@ -21,8 +21,8 @@ import { SubjectInterface } from '../../core/interfaces/subject-interface';
     RouterLink,
     SlicePipe,
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  templateUrl: "./home.component.html",
+  styleUrl: "./home.component.css",
 })
 export class HomeComponent {
   MAX_NOTES_LIMIT = 9;
@@ -57,7 +57,7 @@ export class HomeComponent {
 
   // Search result filtering
 
-  searchQuery: string = '';
+  searchQuery: string = "";
 
   filterNotes(text: string) {
     if (!text) {

@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
 import { NotecardInterface } from "../interfaces/notecard-interface";
 import { SubjectInterface } from "../interfaces/subject-interface";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
 })
 export class noteService {
-  constructor() {}
+  API_URL = "http://localhost:8080/api/v1";
+
+  constructor(http: HttpClient) {}
 
   protected subjectList: SubjectInterface[] = [
     {
