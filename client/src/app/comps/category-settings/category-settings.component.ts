@@ -1,30 +1,35 @@
-import { Component, inject } from '@angular/core';
-import { noteService } from '../../core/services/note.service';
-import { FormsModule, NgForm } from '@angular/forms';
-import { SubjectInterface } from '../../core/interfaces/subject-interface';
+import { Component, OnInit } from "@angular/core";
+import { noteService } from "../../core/services/note.service";
+import { FormsModule, NgForm } from "@angular/forms";
+import { SubjectInterface } from "../../core/interfaces/subject-interface";
 
 @Component({
-  selector: 'app-category-settings',
+  selector: "app-category-settings",
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './category-settings.component.html',
-  styleUrl: './category-settings.component.css',
+  templateUrl: "./category-settings.component.html",
+  styleUrl: "./category-settings.component.css",
 })
-export class CategorySettingsComponent {
-  // Services
-  noteService: noteService = inject(noteService);
+export class CategorySettingsComponent implements OnInit {
+
 
   // Get All Subjects
   subjectList: SubjectInterface[] = [];
 
-  constructor() {
-    this.subjectList = this.noteService.getAllSubjects();
+  constructor(private noteService: noteService) {
   }
 
-  defaultColor = '#000000';
+  ngOnInit(): void {
+    // Get All Subjects
+    this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
+      console.log(subject);
+      this.subjectList = subject;
+    });
+  }
+
+  defaultColor = "#000000";
   // Add New Subject using a Template Driven Form
   onAddNewCategory(e: any) {
-    
     // Add a new Subject
     this.noteService.addSubject({
       id: this.subjectList.length + 1,
@@ -32,10 +37,10 @@ export class CategorySettingsComponent {
       color: e.value.color ?? this.defaultColor,
       isEditing: false,
     });
-    
+
     console.log(e.value.color);
     e.reset({
-      name: '',  
+      name: "",
       color: this.defaultColor,
     });
   }

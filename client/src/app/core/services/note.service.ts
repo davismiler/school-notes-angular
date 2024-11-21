@@ -8,7 +8,6 @@ import { HttpClient } from "@angular/common/http";
 })
 export class noteService {
   API_URL = "http://localhost:8080/api/v1";
-
   constructor(http: HttpClient) {}
 
   protected subjectList: SubjectInterface[] = [
@@ -212,8 +211,9 @@ export class noteService {
   ];
 
   // Note Services
-  getAllNotes(): NotecardInterface[] {
-    return this.notesList.reverse();
+  async getAllNotes(): Promise<NotecardInterface[]> {
+    const notes = await fetch(`${this.API_URL}/notes`);
+    return (await notes.json()) ?? [];
   }
 
   getNoteById(id: Number): NotecardInterface | undefined {
@@ -230,8 +230,10 @@ export class noteService {
   }
 
   // Note Subject Services
-  getAllSubjects(): SubjectInterface[] {
-    return this.subjectList;
+  async getAllSubjects(): Promise<SubjectInterface[]> {
+    // return this.subjectList;
+    const subjects = await fetch(`${this.API_URL}/subjects`);
+    return (await subjects.json()) ?? [];
   }
 
   getSubjectColorByName(name: any) {
@@ -250,5 +252,12 @@ export class noteService {
   deleteSubjectById(id: number): void {
     // IMPLEMENT THE LOGIC WITH DATABASE
     console.log(id);
+  }
+
+  async getSubjectByNoteID(id: Number): Promise<SubjectInterface[]> {
+    const subject = await fetch(
+      `${this.API_URL}/subjects/getSubjectByNoteID/${id}`
+    );
+    return (await subject.json()) ?? [];
   }
 }

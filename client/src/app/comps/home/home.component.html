@@ -37,14 +37,13 @@
         >"
       </h2>
     </section>
-    } 
-    @if (isNotesVisible) {
+    } @if (isNotesVisible) {
     <section id="note-cards">
       <app-note-cards
         *ngFor="let note of filteredNotesList | slice : 0 : notesCount()"
         [Note]="note"
       ></app-note-cards>
     </section>
-  }
+    }
   </section>
 </div>

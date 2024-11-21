@@ -1,4 +1,4 @@
-import { Component, inject, signal, ViewChild } from "@angular/core";
+import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { NgFor, SlicePipe } from "@angular/common";
 import { NoteCardsComponent } from "../note-cards/note-cards.component";
 import { SubjectCardsComponent } from "../subject-cards/subject-cards.component";
@@ -24,7 +24,7 @@ import { SubjectInterface } from "../../core/interfaces/subject-interface";
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css",
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   MAX_NOTES_LIMIT = 9;
   notesCount = signal(this.MAX_NOTES_LIMIT);
   MAX_SUBJECTS_NO = 5;
@@ -46,13 +46,30 @@ export class HomeComponent {
   filteredNotesList: NotecardInterface[] = [];
   subjectList: SubjectInterface[] = [];
 
-  noteService: noteService = inject(noteService);
+  constructor(private noteService: noteService) {
+    
+    // this.subjectList = this.noteService.getAllSubjects();
 
-  constructor() {
-    this.notesList = this.noteService.getAllNotes();
-    this.filteredNotesList = this.notesList;
+  }
+  ngOnInit(): void {
+    
+    // GET ALl Notes
+    this.noteService.getAllNotes()
+    .then((note: NotecardInterface[]) => {
+      this.notesList = note;
+      this.filteredNotesList = this.notesList;
+      // console.log(note);
+    });
 
-    this.subjectList = this.noteService.getAllSubjects();
+    // GET ALL Sebjects
+
+    this.noteService.getAllSubjects()
+    .then((subject: SubjectInterface[]) => {
+      console.log(subject)
+      this.subjectList = subject;
+    });
+
+
   }
 
   // Search result filtering
