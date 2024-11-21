@@ -3,6 +3,7 @@ const router = express.Router();
 
 const conn = require("../db/connection.js");
 const notesCollection = conn.notesCollection;
+const subjectsCollection = conn.subjectsCollection;
 
 router
   .route("/")
@@ -19,16 +20,24 @@ router
 
 router
   .route("/:id")
-  .get((req, res) => {
-    res.send(`GET Note With ID: ${req.params.id}`);
-  })
-  .delete((req, res) => {
-    res.send(`DELETE Note with ID`);
-  });
+  // Get Note by ID
+  .get(async (req, res) => {
+    const noteID = Number(req.params.id);
+    const result = await notesCollection
+      .find({ id: noteID }, { projection: { _id: 0 } })
+      .toArray();
 
-router.get("/new", (req, res) => {
-  res.send("New Note");
-});
+    res.json(result);
+  })
+
+  // Delete Note by ID
+  .delete(async (req, res) => {
+
+    const noteID = Number(req.params.id);
+    const result = await notesCollection.deleteOne({ id: noteID });
+
+    res.json({ Deleted: true });
+  });
 
 module.exports = router;
 

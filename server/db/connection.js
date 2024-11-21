@@ -6,7 +6,7 @@ const client = new MongoClient(URI);
 const database = client.db("schoolnotes");
 
 const notesCollection = database.collection("notes");
-const subjectsCollection = database.collection("subject");
+const subjectsCollection = database.collection("subjects");
 
 async function connectToDatabase() {
   try {
