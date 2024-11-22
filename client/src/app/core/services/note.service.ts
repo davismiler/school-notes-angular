@@ -210,17 +210,22 @@ export class noteService {
     },
   ];
 
-  // Note Services
+  // GET All Notes
   async getAllNotes(): Promise<NotecardInterface[]> {
     const notes = await fetch(`${this.API_URL}/notes`);
     return (await notes.json()) ?? [];
   }
 
+  // GET Note by Id
   async getNoteById(id: Number): Promise<NotecardInterface[]> {
     const notes = await fetch(`${this.API_URL}/notes/${id}`);
     return (await notes.json()) ?? [];
     // git add .; git commit -m "getNoteById on services.ts done";
   }
+
+  // DELETE Note By Id
+
+  async deleteNoteById(id: Number): Promise<void> {}
 
   addNote(obj: NotecardInterface): void {
     this.notesList.push(obj);
