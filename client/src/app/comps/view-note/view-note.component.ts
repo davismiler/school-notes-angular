@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { noteService } from "../../core/services/note.service";
 import { NotecardInterface } from "../../core/interfaces/notecard-interface";
 import { SubjectInterface } from "../../core/interfaces/subject-interface";
@@ -16,7 +16,8 @@ export class ViewNoteComponent implements OnInit {
 
   constructor(
     private noteService: noteService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   noteSubject: SubjectInterface = {
@@ -39,5 +40,21 @@ export class ViewNoteComponent implements OnInit {
       .then((noteSubject: SubjectInterface[]) => {
         this.noteSubject = noteSubject[0];
       });
+  }
+
+  deleteNote() {
+    const confirmDelete = confirm(`Are you sure you wanna delete this note?`);
+
+    if (confirmDelete) {
+
+      
+
+      alert(`"${this.note?.title}" was deleted.`)
+      this.router.navigate(['/']);
+
+    } else {
+      console.log(confirmDelete);
+    }
+
   }
 }

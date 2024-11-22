@@ -18,7 +18,7 @@
     <i class="bx bx-edit"></i>
   </button>
 
-  <button class="primary-btn btn-black control-btn">
+  <button class="primary-btn btn-black control-btn" (click)="deleteNote()">
     <i class="bx bx-trash-alt"></i>
   </button>
 </div>
@@ -27,8 +27,8 @@
   <div class="note-helpers">
     <div class="note-breadcrumb">
       <p>
-        <span [style.color]="noteSubject.color">{{ noteSubject.name }}</span> &gt;
-        {{ note?.id }}. {{ note?.title }}
+        <span [style.color]="noteSubject.color">{{ noteSubject.name }}</span>
+        &gt; {{ note?.id }}. {{ note?.title }}
       </p>
     </div>
   </div>
