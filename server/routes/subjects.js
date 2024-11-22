@@ -11,7 +11,7 @@ router
 
   // Get All the Subjects
   .get(async (req, res) => {
-    const result = await subjectsCollection.find({}, { projection: { _id: 0 } }).toArray();
+    const result = await subjectsCollection.find({}).toArray();
     res.json(result);
   })
 
