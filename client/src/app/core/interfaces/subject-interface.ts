@@ -1,6 +1,5 @@
 export interface SubjectInterface {
-  id: number;
+  _id: any;
   name: string;
   color: string;
-  isEditing: boolean;
 }
