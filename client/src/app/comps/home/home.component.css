@@ -7,7 +7,6 @@
     flex: 2;
     position: relative;
     padding: 5em;
-    height: 100vh;
 
     #note-cards {
       margin-top: 3rem;
@@ -52,12 +51,11 @@
       font-weight: 500;
       color: var(--dark-grey);
     }
-    
+
     span {
       font-style: italic;
       color: var(--black);
     }
-
   }
 }
 /* Responsive */
