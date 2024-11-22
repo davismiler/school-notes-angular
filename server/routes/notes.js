@@ -8,17 +8,40 @@ const subjectsCollection = conn.subjectsCollection;
 router
   .route("/")
   .get(async (req, res) => {
-    // Get Notes Count
-    if (req.query.count === "true") {
-      const result = await notesCollection.countDocuments({});
-      res.json({ count: result });
-      return;
-    }
 
     // Get All Notes
-    const result = await notesCollection.find({}).toArray();
+    const result = await notesCollection.aggregate([
+      {
+        $lookup: {
+          from: "subjects",
+          localField: "subject_id", // Field from notes
+          foreignField: "_id", // Field from subjects
+          as: "subjectDetails", // Name of the array that will hold matched subjects
+        },
+      },
+      {
+        $unwind: {
+          path: "$subjectDetails", // Flatten the subjectDetails array
+        },
+      },
+      {
+        $project: {
+          _id: "$_id", // Note ID
+          title: "$title", // Note title
+          content: "$content", // Note content
+          createdAt: "$createdAt", // Note creation date
+          subject: {
+            _id: "$subjectDetails._id", // Subject ID
+            name: "$subjectDetails.name", // Subject name
+            color: "$subjectDetails.color", // Subject color
+          },
+        },
+      },
+    ]).toArray();
+
     res.json(result);
   })
+
   // Create New Note
   .post(async (req, res) => {
     const result = await notesCollection.insertOne(req.body);
