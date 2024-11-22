@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class noteService {
   API_URL = "http://localhost:8080/api/v1";
-  constructor(http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   protected subjectList: SubjectInterface[] = [
     {
@@ -225,7 +225,15 @@ export class noteService {
 
   // DELETE Note By Id
 
-  async deleteNoteById(id: Number): Promise<void> {}
+  async deleteNoteById(id: Number): Promise<void> {
+    const response = await fetch(`${this.API_URL}/notes/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // console.log(response);
+  }
 
   addNote(obj: NotecardInterface): void {
     this.notesList.push(obj);

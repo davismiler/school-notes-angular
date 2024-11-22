@@ -13,6 +13,7 @@ import { SubjectInterface } from "../../core/interfaces/subject-interface";
 })
 export class ViewNoteComponent implements OnInit {
   note: NotecardInterface | undefined;
+  noteId!: number;
 
   constructor(
     private noteService: noteService,
@@ -28,15 +29,18 @@ export class ViewNoteComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    // const noteId = Number(this.route.snapshot.params["id"]);
+    this.noteId = Number(this.route.snapshot.params["id"]);
     // Get Note Details
-    const noteId = Number(this.route.snapshot.params["id"]);
-    this.noteService.getNoteById(noteId).then((note: NotecardInterface[]) => {
-      this.note = note[0];
-    });
+    this.noteService
+      .getNoteById(this.noteId)
+      .then((note: NotecardInterface[]) => {
+        this.note = note[0];
+      });
 
     // Get Note SUbject by Note Id
     this.noteService
-      .getSubjectByNoteID(noteId)
+      .getSubjectByNoteID(this.noteId)
       .then((noteSubject: SubjectInterface[]) => {
         this.noteSubject = noteSubject[0];
       });
@@ -46,15 +50,14 @@ export class ViewNoteComponent implements OnInit {
     const confirmDelete = confirm(`Are you sure you wanna delete this note?`);
 
     if (confirmDelete) {
+      this.noteService.deleteNoteById(this.noteId).then((note: unknown) => {
+        console.log(note);
+      });
 
-      
-
-      alert(`"${this.note?.title}" was deleted.`)
-      this.router.navigate(['/']);
-
+      alert(`"${this.note?.title}" was deleted.`);
+      this.router.navigate(["/"]);
     } else {
       console.log(confirmDelete);
     }
-
   }
 }
