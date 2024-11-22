@@ -216,8 +216,10 @@ export class noteService {
     return (await notes.json()) ?? [];
   }
 
-  getNoteById(id: Number): NotecardInterface | undefined {
-    return this.notesList.find((note) => note.id === id);
+  async getNoteById(id: Number): Promise<NotecardInterface[]> {
+    const notes = await fetch(`${this.API_URL}/notes/${id}`);
+    return (await notes.json()) ?? [];
+    // git add .; git commit -m "getNoteById on services.ts done";
   }
 
   addNote(obj: NotecardInterface): void {

@@ -30,11 +30,7 @@ export class EditNoteComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private noteService: noteService
-  ) {
-    // Get Note Details to Edit
-    const noteId = Number(this.route.snapshot.params["id"]);
-    this.note = this.noteService.getNoteById(noteId);
-  }
+  ) {}
 
   subject = new FormControl("");
   title = new FormControl("");
@@ -44,6 +40,12 @@ export class EditNoteComponent implements OnInit {
     this.title.setValue(String(this.note?.title));
     this.selectedSubject = String(this.note?.subject);
     this.content.setValue(String(this.note?.content));
+
+    // Get Note Details - to Edit
+    const noteId = Number(this.route.snapshot.params["id"]);
+    this.noteService.getNoteById(noteId).then((note: NotecardInterface[]) => {
+      this.note = note[0];
+    });
 
     // Get All Subjects
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
