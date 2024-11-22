@@ -62,8 +62,11 @@ export class HomeComponent implements OnInit {
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
       this.subjectList = subject;
     });
+
+
   }
 
+  
   // Search result filtering
 
   searchQuery: string = "";
@@ -84,16 +87,16 @@ export class HomeComponent implements OnInit {
   // Subject Card filtering
 
   filterNotesBySubject(subject: SubjectInterface) {
-    if (!subject) {
-      this.isSubjectsVisible = true;
-      this.filteredNotesList = this.notesList;
-    } else {
-      this.isSubjectsVisible = false;
-      this.isNotesVisible = true;
-      this.searchQuery = subject.name;
-      this.filteredNotesList = this.notesList.filter(
-        (note) => note.subject === subject.name
-      );
+      if (!subject) {
+        this.isSubjectsVisible = true;
+        this.filteredNotesList = this.notesList;
+      } else {
+        this.isSubjectsVisible = false;
+        this.isNotesVisible = true;
+        this.searchQuery = subject.name;
+        this.filteredNotesList = this.notesList.filter(
+          (note) => note.subject.name === subject.name// SUBJECT CEOLLECTION -> Subject Name
+        );
     }
   }
 
