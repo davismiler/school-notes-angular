@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
     // GET ALl Notes
     this.noteService.getAllNotes().then((note: NotecardInterface[]) => {
       this.notesList = note;
-      this.filteredNotesList = this.notesList;
+      this.filteredNotesList = this.notesList.reverse();
       // console.log(note);
     });
 
