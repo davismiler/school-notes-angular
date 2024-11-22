@@ -1,4 +1,4 @@
-import { DatePipe, UpperCasePipe } from '@angular/common';
+import { DatePipe, UpperCasePipe } from "@angular/common";
 import {
   Component,
   OnInit,
@@ -6,18 +6,18 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-} from '@angular/core';
+} from "@angular/core";
 
 @Component({
-  selector: 'app-header',
+  selector: "app-header",
   standalone: true,
   imports: [DatePipe, UpperCasePipe],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  templateUrl: "./header.component.html",
+  styleUrl: "./header.component.css",
 })
 export class HeaderComponent implements OnInit {
   // Clock
-  currentTime: string = '';
+  currentTime: string = "";
   currentDate: Date = new Date();
   private timer: any;
 
@@ -34,8 +34,8 @@ export class HeaderComponent implements OnInit {
 
   private updateTime(): void {
     const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
 
     this.currentTime = `${hours}:${minutes}`;
   }
@@ -49,11 +49,9 @@ export class HeaderComponent implements OnInit {
   }
 
   // Focus Search Input
-  @ViewChild('filter') searchInput!: ElementRef<HTMLInputElement>;
+  @ViewChild("filter") searchInput!: ElementRef<HTMLInputElement>;
 
   focusSearchInput(): void {
     this.searchInput.nativeElement.focus();
-    
-    console.log('focusSearchInput ran!');
   }
 }
