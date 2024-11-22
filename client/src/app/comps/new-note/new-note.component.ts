@@ -18,10 +18,6 @@ import { CategorySettingsComponent } from "../category-settings/category-setting
   styleUrl: "./new-note.component.css",
 })
 export class NewNoteComponent implements OnInit {
-  // Set default values for inputs
-  selectedSubject = "";
-
-  // Note Service
   subjectList: SubjectInterface[] = [];
 
   constructor(private router: Router, private noteService: noteService) {}
