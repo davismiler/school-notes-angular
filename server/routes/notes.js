@@ -7,8 +7,15 @@ const subjectsCollection = conn.subjectsCollection;
 
 router
   .route("/")
-  // Get All Notes
   .get(async (req, res) => {
+    // Get Notes Count
+    if (req.query.count === "true") {
+      const result = await notesCollection.countDocuments({});
+      res.json({ count: result });
+      return;
+    }
+
+    // Get All Notes
     const result = await notesCollection.find({}).toArray();
     res.json(result);
   })
@@ -29,7 +36,6 @@ router
 
     res.json(result);
   })
-
   // Delete Note by ID
   .delete(async (req, res) => {
     const noteID = Number(req.params.id);
