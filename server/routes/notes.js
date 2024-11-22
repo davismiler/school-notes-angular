@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const conn = require("../db/connection.js");
-const { ObjectId } = require("mongodb");
 const notesCollection = conn.notesCollection;
 const subjectsCollection = conn.subjectsCollection;
 
