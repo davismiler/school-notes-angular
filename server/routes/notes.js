@@ -8,36 +8,29 @@ const subjectsCollection = conn.subjectsCollection;
 router
   .route("/")
   .get(async (req, res) => {
-
     // Get All Notes
-    const result = await notesCollection.aggregate([
-      {
-        $lookup: {
-          from: "subjects",
-          localField: "subject_id", // Field from notes
-          foreignField: "_id", // Field from subjects
-          as: "subjectDetails", // Name of the array that will hold matched subjects
-        },
-      },
-      {
-        $unwind: {
-          path: "$subjectDetails", // Flatten the subjectDetails array
-        },
-      },
-      {
-        $project: {
-          _id: "$_id", // Note ID
-          title: "$title", // Note title
-          content: "$content", // Note content
-          createdAt: "$createdAt", // Note creation date
-          subject: {
-            _id: "$subjectDetails._id", // Subject ID
-            name: "$subjectDetails.name", // Subject name
-            color: "$subjectDetails.color", // Subject color
+    const result = await notesCollection
+      .aggregate([
+        {
+          $lookup: {
+            from: "subjects",
+            localField: "subject_id",
+            foreignField: "_id",
+            as: "subject_results",
           },
         },
-      },
-    ]).toArray();
+        {
+          $addFields: {
+            subject: {
+              $arrayElemAt: ["$subject_results", 0],
+            },
+          },
+        },
+        {
+          $unset: "subject_results",
+        },
+      ])
+      .toArray();
 
     res.json(result);
   })
