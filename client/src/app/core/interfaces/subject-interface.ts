@@ -1,5 +1,5 @@
 export interface SubjectInterface {
-  _id: any;
+  _id: undefined;
   name: string;
   color: string;
 }

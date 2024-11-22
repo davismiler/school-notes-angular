@@ -22,10 +22,9 @@ export class ViewNoteComponent implements OnInit {
   ) {}
 
   noteSubject: SubjectInterface = {
-    id: 0,
+    _id: undefined,
     name: "",
     color: "",
-    isEditing: false,
   };
 
   ngOnInit(): void {
