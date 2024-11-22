@@ -14,14 +14,14 @@ import { noteService } from "../../core/services/note.service";
 export class NoteCardsComponent implements OnInit {
   @Input() Note!: NotecardInterface;
 
-  constructor(private noteSerivce: noteService) {}
+  constructor(private noteService: noteService) {}
 
+  // Get Note Subject using Note
   ngOnInit(): void {
-    this.noteSerivce
+    this.noteService
       .getSubjectByNoteID(this.Note.id)
       .then((noteSubject: SubjectInterface[]) => {
         this.noteSubject = noteSubject[0];
-        // console.log(noteSubject[0]);
       });
   }
 
