@@ -29,7 +29,6 @@ export class NewNoteComponent implements OnInit {
   ngOnInit(): void {
     // Get all subject in select menu
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
-      console.log(subject);
       this.subjectList = subject;
     });
   }

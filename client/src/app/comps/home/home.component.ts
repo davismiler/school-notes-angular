@@ -24,7 +24,7 @@ import { SubjectInterface } from "../../core/interfaces/subject-interface";
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css",
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   MAX_NOTES_LIMIT = 9;
   notesCount = signal(this.MAX_NOTES_LIMIT);
   MAX_SUBJECTS_NO = 5;
@@ -47,15 +47,11 @@ export class HomeComponent implements OnInit{
   subjectList: SubjectInterface[] = [];
 
   constructor(private noteService: noteService) {
-    
     // this.subjectList = this.noteService.getAllSubjects();
-
   }
   ngOnInit(): void {
-    
     // GET ALl Notes
-    this.noteService.getAllNotes()
-    .then((note: NotecardInterface[]) => {
+    this.noteService.getAllNotes().then((note: NotecardInterface[]) => {
       this.notesList = note;
       this.filteredNotesList = this.notesList;
       // console.log(note);
@@ -63,13 +59,9 @@ export class HomeComponent implements OnInit{
 
     // GET ALL Sebjects
 
-    this.noteService.getAllSubjects()
-    .then((subject: SubjectInterface[]) => {
-      console.log(subject)
+    this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
       this.subjectList = subject;
     });
-
-
   }
 
   // Search result filtering

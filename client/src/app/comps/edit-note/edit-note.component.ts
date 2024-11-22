@@ -47,7 +47,6 @@ export class EditNoteComponent implements OnInit {
 
     // Get All Subjects
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
-      console.log(subject);
       this.subjectList = subject;
     });
   }

@@ -11,18 +11,14 @@ import { SubjectInterface } from "../../core/interfaces/subject-interface";
   styleUrl: "./category-settings.component.css",
 })
 export class CategorySettingsComponent implements OnInit {
-
-
   // Get All Subjects
   subjectList: SubjectInterface[] = [];
 
-  constructor(private noteService: noteService) {
-  }
+  constructor(private noteService: noteService) {}
 
   ngOnInit(): void {
     // Get All Subjects
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
-      console.log(subject);
       this.subjectList = subject;
     });
   }
