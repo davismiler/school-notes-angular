@@ -34,7 +34,7 @@ export class ViewNoteComponent implements OnInit {
       .getNoteById(this.noteId)
       .then((note: NotecardInterface[]) => {
         this.note = note[0];
-        console.log(note[0]);
+        // console.log(note[0]);
       });
   }
 
@@ -45,11 +45,11 @@ export class ViewNoteComponent implements OnInit {
       const noteID = this.note?._id;
 
       this.noteService.deleteNoteById(noteID).then((note: unknown) => {
-        console.log(note);
+        // console.log(note);
       });
       this.router.navigate(["/"]);
     } else {
-      console.log("Note was not deleted. \nReason: Canceled!");
+      console.log("Canceled! Note was not deleted.");
     }
   }
 }
