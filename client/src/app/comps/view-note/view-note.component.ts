@@ -21,7 +21,6 @@ export class ViewNoteComponent implements OnInit {
     private router: Router
   ) {}
 
-
   ngOnInit(): void {
     this.noteId = Number(this.route.snapshot.params["id"]);
 
@@ -30,23 +29,22 @@ export class ViewNoteComponent implements OnInit {
       .then((note: NotecardInterface[]) => {
         this.note = note[0];
         console.log(note[0]);
-        
       });
-
   }
 
   deleteNote() {
     const confirmDelete = confirm(`Are you sure you wanna delete this note?`);
 
     if (confirmDelete) {
-      this.noteService.deleteNoteById(this.noteId).then((note: unknown) => {
+      const noteID = this.note?._id;
+
+      this.noteService.deleteNoteById(noteID).then((note: unknown) => {
         console.log(note);
       });
-
-      alert(`"${this.note?.title}" was deleted.`);
       this.router.navigate(["/"]);
+
     } else {
-      console.log(confirmDelete);
+      console.log("Note was not deleted. \nReason: Canceled!");
     }
   }
 }

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+const { ObjectId } = require("mongodb");
 const conn = require("../db/connection.js");
 const notesCollection = conn.notesCollection;
 const subjectsCollection = conn.subjectsCollection;
@@ -79,10 +80,12 @@ router
   })
   // Delete Note by ID
   .delete(async (req, res) => {
-    const noteID = Number(req.params.id);
-    const result = await notesCollection.deleteOne({ id: noteID });
+    const noteID = req.params.id; // String: Because _id is a string in db
+    const result = await notesCollection.deleteOne({
+      _id: new ObjectId(noteID),
+    });
 
-    res.json({ Deleted: true });
+    res.json({ result });
   });
 
 module.exports = router;

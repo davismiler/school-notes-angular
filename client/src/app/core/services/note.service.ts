@@ -24,14 +24,17 @@ export class noteService {
 
   // DELETE Note By Id
 
-  async deleteNoteById(id: Number): Promise<void> {
+  async deleteNoteById(id: Number): Promise<any> {
+    console.log(typeof id);
+
     const response = await fetch(`${this.API_URL}/notes/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    // console.log(response);
+
+    return (await response.json()) ?? [];
   }
 
   addNote(obj: NotecardInterface): void {
