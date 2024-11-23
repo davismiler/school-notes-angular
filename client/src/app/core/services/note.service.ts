@@ -20,7 +20,6 @@ export class noteService {
     return (await notes.json()) ?? [];
   }
 
-
   async deleteNoteById(id: Number): Promise<any> {
     console.log(typeof id);
 
@@ -45,13 +44,16 @@ export class noteService {
 
   // Note Subject Services
   async getAllSubjects(): Promise<SubjectInterface[]> {
-    // return this.subjectList;
-    const subjects = await fetch(`${this.API_URL}/subjects`);
-    return (await subjects.json()) ?? [];
-  }
+    const subjectsResponse = await fetch(`${this.API_URL}/subjects`);
+    const subjects = (await subjectsResponse.json()) ?? [];
 
-  getSubjectColorByName(name: any) {
-    return this.subjectList.find((subject) => subject.name === name)?.color;
+    // Add the isEditing property to each object
+    const updatedSubjects = subjects.map((subject: SubjectInterface) => ({
+      ...subject,
+      isEditing: false,
+    }));
+
+    return updatedSubjects;
   }
 
   addSubject(obj: SubjectInterface): void {

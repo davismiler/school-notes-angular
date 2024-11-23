@@ -17,14 +17,11 @@
     </h1>
 
     <div class="category">
-      <select
-        name="subject"
-        [formControl]="subject"
-        >
+      <select name="subject" [formControl]="subject">
         <option disabled value="">Choose a Subject</option>
 
         @for (subject of subjectList; track $index) {
-        <option [value]="subject.name" [style.color]="subject.color">
+        <option [value]="subject._id" [style.color]="subject.color">
           {{ subject.name }}
         </option>
         }

@@ -19,11 +19,11 @@
     <div class="category">
       <select
         name="subject"
-        [formControl]="subject"
+        [formControl]="subjectName"
       >
         <option disabled value="">Choose a Subject</option>
 
-        @for (subject of subjectList; track subject.id) {
+        @for (subject of subjectList; track subject._id) {
         <option [value]="subject.name" [style.color]="subject.color">
           {{ subject.name }}
         </option>

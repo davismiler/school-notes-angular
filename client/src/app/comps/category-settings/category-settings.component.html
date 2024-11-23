@@ -59,7 +59,7 @@
           <tbody>
             @for (subject of subjectList; track $index) {
             <tr>
-              <td>{{ subject.id }}</td>
+              <td>{{ subject._id }}</td>
 
               @if (subject.isEditing) {
               <td>
@@ -129,7 +129,7 @@
                   <button
                     class="primary-btn btn-black control-btn"
                     type="button"
-                    (click)="onDeleteCategory(subject.id)"
+                    (click)="onDeleteCategory(subject._id)"
                   >
                     <i class="bx bx-trash-alt"></i>
                   </button>
