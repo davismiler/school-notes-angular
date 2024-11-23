@@ -92,7 +92,6 @@ details {
 /* Modal Popup End */
 
 .category-details-wrapper {
-  max-height: 200px;
   overflow-y: auto;
 
   table.category-details {
@@ -100,7 +99,6 @@ details {
     border-collapse: collapse;
 
     thead th {
-      position: sticky;
       top: 0;
       background: var(--black);
       color: var(--white);
