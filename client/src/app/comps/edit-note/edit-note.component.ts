@@ -19,7 +19,6 @@ import { NotecardInterface } from "../../core/interfaces/notecard-interface";
   styleUrl: "./edit-note.component.css",
 })
 export class EditNoteComponent implements OnInit {
-
   note!: NotecardInterface;
   subjectList!: SubjectInterface[];
 
@@ -28,41 +27,45 @@ export class EditNoteComponent implements OnInit {
     private route: ActivatedRoute,
     private noteService: noteService
   ) {
-
     // Get Note Details from the previous route - to Edit
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
-      this.note = navigation.extras.state['note_data']; 
+      this.note = navigation.extras.state["note_data"];
     }
-
   }
-
+  // Reactive Form Controls
   subject = new FormControl("");
   title = new FormControl("");
   content = new FormControl("");
 
-
   ngOnInit(): void {
-
     // Get All Subjects
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
       this.subjectList = subject;
     });
 
-    // Load the Note Data to the Form to Edit
-
+    // Load the Note Data to Edit
     this.title.setValue(String(this.note?.title));
-    this.subject.setValue(String(this.note.subject.name));
     this.content.setValue(String(this.note?.content));
+    this.subject.setValue(String(this.note.subject._id));
   }
 
   // Update Note
-  onUpdateNoteSubmit() {
-    console.log("Subject: ", this.subject.value);
-    console.log("Title: ", this.title.value);
-    console.log("Content: ", this.content.value);
+  async onUpdateNoteSubmit() {
+    // console.log("Title: ", this.title.value);
+    // console.log("Content: ", this.content.value);
+    // console.log("Subject: ", this.subject.value);
 
-    // this.noteService.updateNote();
+    const updateNoteObj = {
+      ID: this.note.ID,
+      title: this.title.value,
+      content: this.content.value,
+      noteObjectId: this.note._id,
+      subjectObjectId: this.subject.value,
+    };
+
+    await this.noteService.updateNote(updateNoteObj);
+
     this.router.navigate([`/note/${this.note.ID}`]);
   }
 }
