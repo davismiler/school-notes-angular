@@ -46,9 +46,34 @@ router
   // Get Note by ID
   .get(async (req, res) => {
     const noteID = Number(req.params.id);
-    const result = await notesCollection
-      .find({ id: noteID }, { projection: { _id: 0 } })
-      .toArray();
+
+    const pipeline = [
+      {
+        $match: {
+          ID: noteID,
+        },
+      },
+      {
+        $lookup: {
+          from: "subjects",
+          localField: "subject_id",
+          foreignField: "_id",
+          as: "subject_results",
+        },
+      },
+      {
+        $addFields: {
+          subject: {
+            $arrayElemAt: ["$subject_results", 0],
+          },
+        },
+      },
+      {
+        $unset: "subject_results",
+      },
+    ];
+
+    const result = await notesCollection.aggregate(pipeline).toArray();
 
     res.json(result);
   })
