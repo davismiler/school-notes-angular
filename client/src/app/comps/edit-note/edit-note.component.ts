@@ -26,6 +26,8 @@ export class EditNoteComponent implements OnInit {
   subjectList: SubjectInterface[] = [];
   note: NotecardInterface | undefined;
 
+  note!: NotecardInterface;
+  subjectList!: SubjectInterface[];
 
   constructor(
     private router: Router,
@@ -53,8 +55,10 @@ export class EditNoteComponent implements OnInit {
       this.subjectList = subject;
     });
 
+    // Load the Note Data to the Form to Edit
+
     this.title.setValue(String(this.note?.title));
-    // this.selectedSubject = String(this.note?.subject);
+    this.subject.setValue(String(this.note.subject.name));
     this.content.setValue(String(this.note?.content));
   }
 
