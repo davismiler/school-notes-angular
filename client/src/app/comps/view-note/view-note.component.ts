@@ -21,28 +21,18 @@ export class ViewNoteComponent implements OnInit {
     private router: Router
   ) {}
 
-  noteSubject: SubjectInterface = {
-    _id: undefined,
-    name: "",
-    color: "",
-  };
 
   ngOnInit(): void {
-    // const noteId = Number(this.route.snapshot.params["id"]);
     this.noteId = Number(this.route.snapshot.params["id"]);
-    // Get Note Details
+
     this.noteService
       .getNoteById(this.noteId)
       .then((note: NotecardInterface[]) => {
         this.note = note[0];
+        console.log(note[0]);
+        
       });
 
-    // Get Note SUbject by Note Id
-    this.noteService
-      .getSubjectByNoteID(this.noteId)
-      .then((noteSubject: SubjectInterface[]) => {
-        this.noteSubject = noteSubject[0];
-      });
   }
 
   deleteNote() {
