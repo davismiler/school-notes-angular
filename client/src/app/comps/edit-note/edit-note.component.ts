@@ -26,31 +26,41 @@ export class EditNoteComponent implements OnInit {
   subjectList: SubjectInterface[] = [];
   note: NotecardInterface | undefined;
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private noteService: noteService
-  ) {}
+  ) {
+
+    // Get Note Details from the previous route - to Edit
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      this.note = navigation.extras.state['note_data']; 
+    }
+    
+  }
 
   subject = new FormControl("");
   title = new FormControl("");
   content = new FormControl("");
 
-  ngOnInit(): void {
-    this.title.setValue(String(this.note?.title));
-    this.selectedSubject = String(this.note?.subject);
-    this.content.setValue(String(this.note?.content));
 
-    // Get Note Details - to Edit
-    const noteId = Number(this.route.snapshot.params["id"]);
-    this.noteService.getNoteById(noteId).then((note: NotecardInterface[]) => {
-      this.note = note[0];
-    });
+  ngOnInit(): void {
+
+    // const noteId = Number(this.route.snapshot.params["id"]);
+    // this.noteService.getNoteById(noteId).then((note: NotecardInterface[]) => {
+    //   this.note = note[0];
+    // });
 
     // Get All Subjects
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
       this.subjectList = subject;
     });
+
+    this.title.setValue(String(this.note?.title));
+    // this.selectedSubject = String(this.note?.subject);
+    this.content.setValue(String(this.note?.content));
   }
 
   // Update Note

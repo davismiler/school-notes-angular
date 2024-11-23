@@ -21,6 +21,12 @@ export class ViewNoteComponent implements OnInit {
     private router: Router
   ) {}
 
+  goToEdit(): void {
+    this.router.navigate([`note/${this.noteId}/edit`], {
+      state: { note_data: this.note },
+    });
+  }
+
   ngOnInit(): void {
     this.noteId = Number(this.route.snapshot.params["id"]);
 
@@ -42,7 +48,6 @@ export class ViewNoteComponent implements OnInit {
         console.log(note);
       });
       this.router.navigate(["/"]);
-
     } else {
       console.log("Note was not deleted. \nReason: Canceled!");
     }
