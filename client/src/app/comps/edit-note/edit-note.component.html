@@ -20,8 +20,7 @@
       <select
         name="subject"
         [formControl]="subject"
-        [(ngModel)]="selectedSubject"
-      >
+        >
         <option disabled value="">Choose a Subject</option>
 
         @for (subject of subjectList; track $index) {
