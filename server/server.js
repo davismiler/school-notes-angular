@@ -5,11 +5,13 @@ const PORT = 8080;
 const cors = require("cors");
 
 // Configure CORS
-app.use(cors({
-  origin: 'http://localhost:4200', // Allow only your Angular app to access the API
-  methods: 'GET,POST,PUT,DELETE', // Specify allowed HTTP methods
-  allowedHeaders: 'Content-Type, Authorization', // Specify allowed headers
-}));
+app.use(
+  cors({
+    origin: "http://localhost:4200", // Allow only your Angular app to access the API
+    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"], // Specify allowed HTTP methods
+    allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
+  })
+);
 
 app.use(express.json());
 
