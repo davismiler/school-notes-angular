@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { noteService } from "../../core/services/note.service";
 import { NotecardInterface } from "../../core/interfaces/notecard-interface";
-import { SubjectInterface } from "../../core/interfaces/subject-interface";
 
 @Component({
   selector: "app-view-note",
@@ -34,7 +33,6 @@ export class ViewNoteComponent implements OnInit {
       .getNoteById(this.noteId)
       .then((note: NotecardInterface[]) => {
         this.note = note[0];
-        // console.log(note[0]);
       });
   }
 
@@ -45,7 +43,7 @@ export class ViewNoteComponent implements OnInit {
       const noteID = this.note?._id;
 
       this.noteService.deleteNoteById(noteID).then((note: unknown) => {
-        // console.log(note);
+
       });
       this.router.navigate(["/"]);
     } else {
