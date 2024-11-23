@@ -78,9 +78,28 @@ router
 
     res.json(result);
   })
+  // Update Note by ID
+  .patch(async (req, res) => {
+    // DON'T use req.params.id, Since it can have duplicated Id's
+    const noteObjectID = String(req.body.noteObjectId);
+    const subjectObjectId = String(req.body.subjectObjectId);
+
+    const filter = { _id: new ObjectId(noteObjectID) };
+
+    const result = await notesCollection.updateOne(filter, {
+      $set: {
+        subject_id: new ObjectId(subjectObjectId),
+        title: req.body.title,
+        content: req.body.content,
+      },
+    });
+
+    res.json(result);
+  })
+
   // Delete Note by ID
   .delete(async (req, res) => {
-    const noteID = req.params.id; // String: Because _id is a string in db
+    const noteID = req.params.id; // Keep it as a String: Because _id is a string in Mongodb
     const result = await notesCollection.deleteOne({
       _id: new ObjectId(noteID),
     });

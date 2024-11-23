@@ -35,11 +35,19 @@ export class noteService {
 
   addNote(obj: NotecardInterface): void {
     this.notesList.push(obj);
+  async updateNote(obj: any): Promise<void> {
+    // IMPLEMENT THE LOGIC WITH DATABASE
+    await fetch(`${this.API_URL}/notes/${obj.ID}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    })
+      // .then((data) => console.log(data))
+      .catch((error) => console.error("error:", error));
   }
 
-  updateNote(obj: NotecardInterface): void {
-    console.log(obj);
-    // IMPLEMENT THE LOGIC WITH DATABASE
   }
 
   // Note Subject Services
