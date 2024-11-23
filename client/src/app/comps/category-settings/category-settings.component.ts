@@ -11,34 +11,30 @@ import { SubjectInterface } from "../../core/interfaces/subject-interface";
   styleUrl: "./category-settings.component.css",
 })
 export class CategorySettingsComponent implements OnInit {
-  // Get All Subjects
   subjectList: SubjectInterface[] = [];
 
   constructor(private noteService: noteService) {}
 
   ngOnInit(): void {
-    // Get All Subjects
+    this.getAllSubjects();
+  }
+
+  getAllSubjects() {
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
-      this.subjectList = subject;
+      this.subjectList = subject.reverse();
     });
   }
 
   defaultColor = "#000000";
-  // Add New Subject using a Template Driven Form
+
   onAddNewCategory(e: any) {
-    // Add a new Subject
     this.noteService.addSubject({
-      id: this.subjectList.length + 1,
       name: e.value.name,
       color: e.value.color ?? this.defaultColor,
-      isEditing: false,
     });
 
-    console.log(e.value.color);
-    e.reset({
-      name: "",
-      color: this.defaultColor,
-    });
+    this.getAllSubjects();
+    e.reset();
   }
 
   // Category Table Inline CRUD Operations
@@ -46,18 +42,18 @@ export class CategorySettingsComponent implements OnInit {
   subjectCopy!: SubjectInterface;
 
   onEditCategory(subject: SubjectInterface) {
-    subject.isEditing = true;
+    // subject.isEditing = true;
     this.subjectCopy = { ...subject };
   }
 
   onEditCategoryCancel(subject: SubjectInterface) {
-    subject.isEditing = false;
+    // subject.isEditing = false;
     subject.name = this.subjectCopy.name;
     subject.color = this.subjectCopy.color;
   }
 
   onUpdateCategory(subject: SubjectInterface) {
-    subject.isEditing = false;
+    // subject.isEditing = false;
     this.noteService.updateSubject(subject);
   }
 

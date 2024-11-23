@@ -51,7 +51,7 @@
             </tr>
           </thead>
           <tbody>
-            @for (subject of subjectList; track $index) {
+            @for (subject of subjectList; track subject._id) {
             <tr>
               <td>{{ $index + 1 }}</td>
 
