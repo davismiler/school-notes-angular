@@ -15,14 +15,11 @@ export class noteService {
     return (await notes.json()) ?? [];
   }
 
-  // GET Note by Id
   async getNoteById(id: Number): Promise<NotecardInterface[]> {
     const notes = await fetch(`${this.API_URL}/notes/${id}`);
     return (await notes.json()) ?? [];
-    // git add .; git commit -m "getNoteById on services.ts done";
   }
 
-  // DELETE Note By Id
 
   async deleteNoteById(id: Number): Promise<any> {
     console.log(typeof id);
