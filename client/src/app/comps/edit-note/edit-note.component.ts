@@ -19,12 +19,6 @@ import { NotecardInterface } from "../../core/interfaces/notecard-interface";
   styleUrl: "./edit-note.component.css",
 })
 export class EditNoteComponent implements OnInit {
-  // Set default values for inputs
-  selectedSubject: string = "";
-
-  // Note Service
-  subjectList: SubjectInterface[] = [];
-  note: NotecardInterface | undefined;
 
   note!: NotecardInterface;
   subjectList!: SubjectInterface[];
@@ -63,13 +57,12 @@ export class EditNoteComponent implements OnInit {
   }
 
   // Update Note
-
   onUpdateNoteSubmit() {
     console.log("Subject: ", this.subject.value);
     console.log("Title: ", this.title.value);
     console.log("Content: ", this.content.value);
 
     // this.noteService.updateNote();
-    this.router.navigate(["/"]);
+    this.router.navigate([`/note/${this.note.ID}`]);
   }
 }
