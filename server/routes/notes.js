@@ -9,29 +9,29 @@ router
   .route("/")
   .get(async (req, res) => {
     // Get All Notes
-    const result = await notesCollection
-      .aggregate([
-        {
-          $lookup: {
-            from: "subjects",
-            localField: "subject_id",
-            foreignField: "_id",
-            as: "subject_results",
-          },
-        },
-        {
-          $addFields: {
-            subject: {
-              $arrayElemAt: ["$subject_results", 0],
-            },
-          },
-        },
-        {
-          $unset: "subject_results",
-        },
-      ])
-      .toArray();
 
+    const pipeline = [
+      {
+        $lookup: {
+          from: "subjects",
+          localField: "subject_id",
+          foreignField: "_id",
+          as: "subject_results",
+        },
+      },
+      {
+        $addFields: {
+          subject: {
+            $arrayElemAt: ["$subject_results", 0],
+          },
+        },
+      },
+      {
+        $unset: "subject_results",
+      },
+    ];
+
+    const result = await notesCollection.aggregate(pipeline).toArray();
     res.json(result);
   })
 
