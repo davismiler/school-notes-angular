@@ -59,7 +59,7 @@
           <tbody>
             @for (subject of subjectList; track $index) {
             <tr>
-              <td>{{ subject._id }}</td>
+              <td>{{ $index + 1 }}</td>
 
               @if (subject.isEditing) {
               <td>
