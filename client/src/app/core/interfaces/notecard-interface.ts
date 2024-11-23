@@ -1,8 +1,12 @@
 export interface NotecardInterface {
-  id: number;
-  subject_id: string;
+  _id: any;
+  ID: number;
   title: string;
   content: string;
-  date: string;
-  time: string;
+  createdAt: string;
+  subject: {
+    _id: any;
+    name: string;
+    color: string;
+  };
 }
