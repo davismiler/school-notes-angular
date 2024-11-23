@@ -38,7 +38,7 @@ export class EditNoteComponent implements OnInit {
     if (navigation?.extras.state) {
       this.note = navigation.extras.state['note_data']; 
     }
-    
+
   }
 
   subject = new FormControl("");
@@ -47,11 +47,6 @@ export class EditNoteComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    // const noteId = Number(this.route.snapshot.params["id"]);
-    // this.noteService.getNoteById(noteId).then((note: NotecardInterface[]) => {
-    //   this.note = note[0];
-    // });
 
     // Get All Subjects
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
@@ -73,6 +68,4 @@ export class EditNoteComponent implements OnInit {
     // this.noteService.updateNote();
     this.router.navigate(["/"]);
   }
-
-  titletest: string = "Test";
 }
