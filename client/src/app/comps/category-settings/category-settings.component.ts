@@ -37,23 +37,24 @@ export class CategorySettingsComponent implements OnInit {
     e.reset();
   }
 
-  // Category Table Inline CRUD Operations
+  // Category Table CRUD Operations
 
+  // This helps to reset the editied value when you canceled the Editing without Submitting
   subjectCopy!: SubjectInterface;
 
   onEditCategory(subject: SubjectInterface) {
-    // subject.isEditing = true;
+    subject.isEditing = true;
     this.subjectCopy = { ...subject };
   }
 
   onEditCategoryCancel(subject: SubjectInterface) {
-    // subject.isEditing = false;
+    subject.isEditing = false;
     subject.name = this.subjectCopy.name;
     subject.color = this.subjectCopy.color;
   }
 
   onUpdateCategory(subject: SubjectInterface) {
-    // subject.isEditing = false;
+    subject.isEditing = false;
     this.noteService.updateSubject(subject);
   }
 
