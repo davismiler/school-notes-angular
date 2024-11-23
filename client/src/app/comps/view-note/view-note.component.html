@@ -20,8 +20,10 @@
   <div class="note-helpers">
     <div class="note-breadcrumb">
       <p>
-        <span [style.color]="noteSubject.color">{{ noteSubject.name }}</span>
-        &gt; {{ note?.id }}. {{ note?.title }}
+        <span [style.color]="note?.subject?.color">{{
+          note?.subject?.name
+        }}</span>
+        &gt; {{ note?.ID }}. {{ note?.title }}
       </p>
     </div>
   </div>
