@@ -11,24 +11,8 @@ import { noteService } from "../../core/services/note.service";
   templateUrl: "./note-cards.component.html",
   styleUrl: "./note-cards.component.css",
 })
-export class NoteCardsComponent implements OnInit {
+export class NoteCardsComponent {
   @Input() Note!: NotecardInterface;
 
   constructor(private noteService: noteService) {}
-
-  // Get Note Subject using Note
-  ngOnInit(): void {
-    this.noteService
-      .getSubjectByNoteID(this.Note.id)
-      .then((noteSubject: SubjectInterface[]) => {
-        this.noteSubject = noteSubject[0];
-      });
-  }
-
-  noteSubject: SubjectInterface = {
-    id: 0,
-    name: "",
-    color: "",
-    isEditing: false,
-  };
 }
