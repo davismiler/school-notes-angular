@@ -64,8 +64,14 @@ export class noteService {
     return updatedSubjects;
   }
 
-  addSubject(obj: SubjectInterface): void {
-    this.subjectList.push(obj);
+  async addSubject(subjectObj: { name: string; color: string }): Promise<void> {
+    await fetch(`${this.API_URL}/subjects`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(subjectObj),
+    });
   }
 
   updateSubject(obj: SubjectInterface) {
