@@ -46,9 +46,6 @@ export class NewNoteComponent implements OnInit {
   content = new FormControl("");
 
   onNewNoteSubmit() {
-    // console.log("Subject: ", this.subject.value);
-    // console.log("Title: ", this.title.value);
-    // console.log("Content: ", this.content.value);
 
     // Get Notes Count
     this.getNotesCount();

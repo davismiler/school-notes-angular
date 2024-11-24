@@ -52,10 +52,6 @@ export class EditNoteComponent implements OnInit {
 
   // Update Note
   async onUpdateNoteSubmit() {
-    // console.log("Title: ", this.title.value);
-    // console.log("Content: ", this.content.value);
-    // console.log("Subject: ", this.subject.value);
-
     const updateNoteObj = {
       ID: this.note.ID,
       title: this.title.value,

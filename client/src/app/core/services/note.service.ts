@@ -112,11 +112,4 @@ export class noteService {
       },
     });
   }
-
-  // async getSubjectByNoteID(id: Number): Promise<SubjectInterface[]> {
-  //   const subject = await fetch(
-  //     `${this.API_URL}/subjects/getSubjectByNoteID/${id}`
-  //   );
-  //   return (await subject.json()) ?? [];
-  // }
 }
