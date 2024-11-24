@@ -24,15 +24,6 @@ router
 
 router
   .route("/:id")
-  // Get Subject by Id
-  // .get(async (req, res) => {
-  //   const subjectID = Number(req.params.id);
-  //   const result = await subjectsCollection
-  //     .find({ id: subjectID }, { projection: { _id: 0 } })
-  //     .toArray();
-
-  //   res.json(result);
-  // })
 
   // Update Subject By ID
   .patch(async (req, res) => {
@@ -59,21 +50,5 @@ router
     res.json({ deleted: true });
     // console.log(result);
   });
-
-// router.get("/getSubjectByNoteID/:id", async (req, res) => {
-// const noteID = Number(req.params.id);
-
-// let noteSubjectId = await notesCollection
-//   .find({ id: noteID }, { projection: { _id: 0, subject_id: 1 } })
-//   .toArray();
-
-// noteSubjectId = noteSubjectId[0].subject_id;
-
-// const subjectData = await subjectsCollection
-//   .find({ id: noteSubjectId }, { projection: { _id: 0 } })
-//   .toArray();
-
-// res.json(subjectData);
-// });
 
 module.exports = router;
