@@ -15,8 +15,7 @@ import { NotecardInterface } from "../../core/interfaces/notecard-interface";
     ReactiveFormsModule,
     CategorySettingsComponent,
   ],
-  // templateUrl: "./new-note.component.html",
-  template: "",
+  templateUrl: "./new-note.component.html",
   styleUrl: "./new-note.component.css",
 })
 export class NewNoteComponent implements OnInit {
@@ -25,6 +24,12 @@ export class NewNoteComponent implements OnInit {
 
   constructor(private router: Router, private noteService: noteService) {}
 
+  getNotesCount() {
+    this.noteService.getNotesCount().then((c) => {
+      this.notesCount = c.count;
+    });
+  }
+
   ngOnInit(): void {
     // Get all subject in select menu
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
@@ -32,13 +37,10 @@ export class NewNoteComponent implements OnInit {
     });
 
     // Get Notes Count on load
-    this.noteService.getNotesCount().then((c) => {
-      this.notesCount = c.count;
-    });
+    this.getNotesCount();
   }
 
   // Add a New Note (Reactive Form)
-
   subjectName = new FormControl("");
   title = new FormControl("");
   content = new FormControl("");
@@ -49,9 +51,7 @@ export class NewNoteComponent implements OnInit {
     // console.log("Content: ", this.content.value);
 
     // Get Notes Count
-    this.noteService.getNotesCount().then((c) => {
-      this.notesCount = c.count;
-    });
+    this.getNotesCount();
 
     const now = new Date();
 
@@ -59,21 +59,16 @@ export class NewNoteComponent implements OnInit {
       return subject.name === this.subjectName.value;
     });
 
-    const noteObj: unknown = {
-      // ID: this.notesCount + 1,
-      // subject_id: chosenSubject?.id ?? 0,
-      // title: this.title.value ?? "",
-      // content: this.content.value ?? "",
-      // date: now.toISOString().split("T")[0],
-      // time: now.toTimeString().slice(0, 5),
+    const noteObj: any = {
+      ID: this.notesCount + 1,
+      subject_id: chosenSubject?._id ?? 0,
+      title: this.title.value ?? "",
+      content: this.content.value ?? "",
+      createdAt: String(now),
     };
 
-    console.log(noteObj);
-
-    // this.noteService.addNote(noteObj);
+    this.noteService.addNote(noteObj);
 
     this.router.navigate(["/"]);
   }
-
-
 }

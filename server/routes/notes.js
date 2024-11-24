@@ -9,8 +9,17 @@ const subjectsCollection = conn.subjectsCollection;
 router
   .route("/")
   .get(async (req, res) => {
-    // Get All Notes
+    console.log(req.query);
 
+    if (req.query.count == "true") {
+      console.log(req.query.count);
+
+      const noteCount = await notesCollection.countDocuments();
+      res.json({ count: noteCount });
+      return;
+    }
+
+    // Get All Notes
     const pipeline = [
       {
         $lookup: {
@@ -38,7 +47,13 @@ router
 
   // Create New Note
   .post(async (req, res) => {
-    const result = await notesCollection.insertOne(req.body);
+    const result = await notesCollection.insertOne({
+      ID: req.body.ID,
+      subject_id: new ObjectId(String(req.body.subject_id)),
+      title: req.body.title,
+      content: req.body.content,
+      createdAt: req.body.createdAt,
+    });
     res.json(req.body);
   });
 

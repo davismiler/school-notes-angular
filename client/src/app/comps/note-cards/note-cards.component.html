@@ -5,9 +5,8 @@
     }}</span>
     |
     <span class="time">{{
-      Note.createdAt | date : "dd MMM yy hh:mm a"
+      Note.createdAt | date : "dd MMM yyyy | hh:mm a"
     }}</span>
-    |
     <!-- <span class="date">{{ Note.date }}</span> -->
   </p>
   <h2 [routerLink]="['/note', Note.ID]">{{ Note.title }}</h2>
