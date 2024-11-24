@@ -42,7 +42,6 @@ export class CategorySettingsComponent implements OnInit {
   @Output() onRefreshSubjects = new EventEmitter();
 
   refreshSubjects() {
-    console.log("triggered!");
     this.onRefreshSubjects.emit();
   }
 
