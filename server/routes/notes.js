@@ -9,11 +9,8 @@ const subjectsCollection = conn.subjectsCollection;
 router
   .route("/")
   .get(async (req, res) => {
-    console.log(req.query);
-
+    // when ?count=true
     if (req.query.count == "true") {
-      console.log(req.query.count);
-
       const noteCount = await notesCollection.countDocuments();
       res.json({ count: noteCount });
       return;
