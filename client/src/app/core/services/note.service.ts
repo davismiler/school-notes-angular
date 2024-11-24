@@ -51,8 +51,6 @@ export class noteService {
   }
 
   async addNote(noteObj: NotecardInterface): Promise<void> {
-    // this.notesList.push(obj);
-    console.log(noteObj);
 
     await fetch(`${this.API_URL}/notes/`, {
       method: "POST",
