@@ -103,6 +103,7 @@ export class HomeComponent implements OnInit {
     this.isNotesVisible = true;
     this.filteredNotesList = this.notesList;
     this.notesCount.set(this.MAX_NOTES_LIMIT);
+    this.subjectsCount.set(this.MAX_SUBJECTS_NO);
   }
 
   // Show all notes on Home
