@@ -30,12 +30,15 @@ export class NewNoteComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // Get all subject in select menu
+  // Get all subject in select menu
+  getAllSubjects() {
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
       this.subjectList = subject;
     });
+  }
 
+  ngOnInit(): void {
+    this.getAllSubjects();
     // Get Notes Count on load
     this.getNotesCount();
   }
@@ -46,7 +49,6 @@ export class NewNoteComponent implements OnInit {
   content = new FormControl("");
 
   onNewNoteSubmit() {
-
     // Get Notes Count
     this.getNotesCount();
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { noteService } from "../../core/services/note.service";
 import { FormsModule } from "@angular/forms";
 import { SubjectInterface } from "../../core/interfaces/subject-interface";
@@ -34,7 +34,16 @@ export class CategorySettingsComponent implements OnInit {
     });
 
     await this.getAllSubjects();
+    await this.refreshSubjects();
     e.reset();
+  }
+  // Refresh the Subject List on CRUD --> Parent
+
+  @Output() onRefreshSubjects = new EventEmitter();
+
+  refreshSubjects() {
+    console.log("triggered!");
+    this.onRefreshSubjects.emit();
   }
 
   // Category Table CRUD Operations
@@ -56,11 +65,14 @@ export class CategorySettingsComponent implements OnInit {
   async onUpdateCategory(subject: SubjectInterface) {
     subject.isEditing = false;
     await this.noteService.updateSubject(subject);
-    // await this.getAllSubjects(); // Because angular will render the local changed automatically
+    this.refreshSubjects();
+    // await this.getAllSubjects(); // Upadted local subjectList to show edited subject.
+    // Because angular will render the local changed automatically
   }
 
   async onDeleteCategory(subjectID: number) {
     await this.noteService.deleteSubjectById(subjectID);
     await this.getAllSubjects();
+    await this.refreshSubjects();
   }
 }
