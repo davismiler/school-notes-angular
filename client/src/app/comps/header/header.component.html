@@ -22,7 +22,7 @@
   <ng-content></ng-content>
 
   <div id="clock">
-    <span class="time">{{ currentTime }}PM |</span>
+    <span class="time">{{ currentDate | date : "hh:mm a" }} |</span>
     <div class="date">
       <span>{{ currentDate | date : "dd MMM" | uppercase }}</span>
       <!-- 07 NOV -->

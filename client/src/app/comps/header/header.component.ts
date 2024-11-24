@@ -16,29 +16,10 @@ import {
   styleUrl: "./header.component.css",
 })
 export class HeaderComponent implements OnInit {
-  // Clock
-  currentTime: string = "";
+  // Clock & Date
   currentDate: Date = new Date();
-  private timer: any;
 
-  ngOnInit(): void {
-    this.updateTime();
-    this.timer = setInterval(() => {
-      this.updateTime();
-    }, 1000);
-  }
-
-  ngOnDestroy(): void {
-    clearInterval(this.timer);
-  }
-
-  private updateTime(): void {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-
-    this.currentTime = `${hours}:${minutes}`;
-  }
+  ngOnInit(): void {}
 
   // Search Input
 
