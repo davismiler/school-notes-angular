@@ -4,7 +4,9 @@
       Note.subject.name
     }}</span>
     |
-    <span class="time">{{ Note.createdAt }}</span>
+    <span class="time">{{
+      Note.createdAt | date : "dd MMM yy hh:mm a"
+    }}</span>
     |
     <!-- <span class="date">{{ Note.date }}</span> -->
   </p>
