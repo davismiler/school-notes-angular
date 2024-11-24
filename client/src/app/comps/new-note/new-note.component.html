@@ -17,10 +17,7 @@
     </h1>
 
     <div class="category">
-      <select
-        name="subject"
-        [formControl]="subjectName"
-      >
+      <select name="subject" [formControl]="subjectName">
         <option disabled value="">Choose a Subject</option>
 
         @for (subject of subjectList; track subject._id) {
