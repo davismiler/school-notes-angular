@@ -33,10 +33,7 @@ export class noteService {
     return (await response.json()) ?? [];
   }
 
-  addNote(obj: NotecardInterface): void {
-    this.notesList.push(obj);
   async updateNote(obj: any): Promise<void> {
-    // IMPLEMENT THE LOGIC WITH DATABASE
     await fetch(`${this.API_URL}/notes/${obj.ID}`, {
       method: "PATCH",
       headers: {
@@ -48,6 +45,24 @@ export class noteService {
       .catch((error) => console.error("error:", error));
   }
 
+  async getNotesCount(): Promise<{ count: number }> {
+    const count = await fetch(`${this.API_URL}/notes?count=true`);
+    return (await count.json()) ?? [];
+  }
+
+  async addNote(noteObj: NotecardInterface): Promise<void> {
+    // this.notesList.push(obj);
+    console.log(noteObj);
+
+    await fetch(`${this.API_URL}/notes/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(noteObj),
+    })
+      // .then((data) => console.log(data))
+      .catch((error) => console.error("error:", error));
   }
 
   // Note Subject Services
@@ -74,20 +89,36 @@ export class noteService {
     });
   }
 
-  updateSubject(obj: SubjectInterface) {
-    // IMPLEMENT THE LOGIC WITH DATABASE
-    console.log(obj);
+  async updateSubject(subjectObj: SubjectInterface) {
+    console.log(subjectObj);
+
+    const subjectObjId = subjectObj._id;
+
+    await fetch(`${this.API_URL}/subjects/${subjectObjId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(subjectObj),
+    })
+      // .then((data) => console.log(data))
+      .catch((error) => console.error("error:", error));
+    // console.log(subjectObj);
   }
 
-  deleteSubjectById(id: number): void {
-    // IMPLEMENT THE LOGIC WITH DATABASE
-    console.log(id);
+  async deleteSubjectById(id: number): Promise<void> {
+    await fetch(`${this.API_URL}/subjects/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
-  async getSubjectByNoteID(id: Number): Promise<SubjectInterface[]> {
-    const subject = await fetch(
-      `${this.API_URL}/subjects/getSubjectByNoteID/${id}`
-    );
-    return (await subject.json()) ?? [];
-  }
+  // async getSubjectByNoteID(id: Number): Promise<SubjectInterface[]> {
+  //   const subject = await fetch(
+  //     `${this.API_URL}/subjects/getSubjectByNoteID/${id}`
+  //   );
+  //   return (await subject.json()) ?? [];
+  // }
 }

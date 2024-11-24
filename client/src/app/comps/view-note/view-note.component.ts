@@ -42,9 +42,7 @@ export class ViewNoteComponent implements OnInit {
     if (confirmDelete) {
       const noteID = this.note?._id;
 
-      this.noteService.deleteNoteById(noteID).then((note: unknown) => {
-
-      });
+      this.noteService.deleteNoteById(noteID).then((note: unknown) => {});
       this.router.navigate(["/"]);
     } else {
       console.log("Canceled! Note was not deleted.");

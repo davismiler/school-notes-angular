@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { noteService } from "../../core/services/note.service";
-import { FormsModule, NgForm } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { SubjectInterface } from "../../core/interfaces/subject-interface";
 
 @Component({
@@ -27,13 +27,13 @@ export class CategorySettingsComponent implements OnInit {
 
   defaultColor = "#000000";
 
-  onAddNewCategory(e: any) {
-    this.noteService.addSubject({
+  async onAddNewCategory(e: any) {
+    await this.noteService.addSubject({
       name: e.value.name,
       color: e.value.color ?? this.defaultColor,
     });
 
-    this.getAllSubjects();
+    await this.getAllSubjects();
     e.reset();
   }
 
@@ -53,12 +53,14 @@ export class CategorySettingsComponent implements OnInit {
     subject.color = this.subjectCopy.color;
   }
 
-  onUpdateCategory(subject: SubjectInterface) {
+  async onUpdateCategory(subject: SubjectInterface) {
     subject.isEditing = false;
-    this.noteService.updateSubject(subject);
+    await this.noteService.updateSubject(subject);
+    // await this.getAllSubjects(); // Because angular will render the local changed automatically
   }
 
-  onDeleteCategory(subjectID: number) {
-    this.noteService.deleteSubjectById(subjectID);
+  async onDeleteCategory(subjectID: number) {
+    await this.noteService.deleteSubjectById(subjectID);
+    await this.getAllSubjects();
   }
 }
