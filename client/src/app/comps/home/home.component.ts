@@ -52,15 +52,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // GET ALl Notes
     this.noteService.getAllNotes().then((note: NotecardInterface[]) => {
-      this.notesList = note;
-      this.filteredNotesList = this.notesList.reverse();
+      this.notesList = note.reverse();
+      this.filteredNotesList = this.notesList;
       // console.log(note);
     });
 
     // GET ALL Sebjects
 
     this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
-      this.subjectList = subject;
+      this.subjectList = subject.reverse();
     });
   }
 
