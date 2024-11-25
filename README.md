@@ -1,24 +1,97 @@
-## SchoolNotes 📚📝
-### Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<h1 align="center">SchoolNotes</h1>
 
-### Code scaffolding
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<p align="center">
+  <a href="https://hansana.is-a.dev">
+    <img src="https://skillicons.dev/icons?i=mongodb,express,angular,nodejs" />
+  </a>
+</p>
 
-### Build
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<h3 align="center">A Simple Note Taking Application for Students.</h3>
 
-### Running unit tests
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![image](https://github.com/user-attachments/assets/466fca57-3a58-41c4-b645-ba91f6a5b81f)
 
-### Running end-to-end tests
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Features 
+Using this application you can,
+- Create Notes
+- Read Notes
+- Edit Notes
+- Delete Notes
+- Categorize Notes
+- Search Notes
+- Add New Categories
+- Edit Category Settings
 
-### Further help
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Also, it is,
+- Mobile-friendly design
+- Scalability with MongoDB Database
+- Super fast note searching
+- Faster loading times
 
-This project was created with MEAN Stack: 
+## How to Use?
+Here is a quick video of how you can use this application:
+- Video: [https://youtube.com/](https://youtu.be/)
+
+## How to Run it on your Computer?
+
+🔹 First, install the following softwares on your computer:
+- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/en)
+- [Mongosh](https://www.mongodb.com/try/download/shell)
+
+🔹 Then, Create a FREE MongoDB Cluster by watching this video: [https://youtu.be/VkXvVOb99g0](https://youtu.be/VkXvVOb99g0)
+
+🔹 Then go to the `../school-note-angular/server` folder and rename the `.example.env` file to `.env`.
+
+🔹 Update the `MDB_URL`  with your MongoDB URI as the following example (no commas included):
+```
+MDB_URL = mongodb+srv://username:password@something.1yadd.mongodb.net/?retryWrites=true&w=majority&appName=something
+ ```
+
+🔹 Now, Open your terminal and type the following commands:
+(_This might take 5-15 minutes.._)
+```
+git clone https://github.com/DevHanza/school-notes-angular.git
+cd school-notes-angular
+npm run start
+```
+🔹 Now wait until a link appears on your terminal.
+
+🔹 Open it from your browser to use the application.
+
+🔹 Done. ✅ (Hit `CTRL + C` to stop the application.)
+
+## Got a problem?
+Feel free to contact me on [Linkedin](https://www.linkedin.com/in/devhanza/).
+<div
+  class='LI-profile-badge'
+  data-version='v1'
+  data-size='medium'
+  data-locale='en_US'
+  data-type='horizontal'
+  data-theme='dark'
+  data-vanity='devhanza'
+>
+  <a
+    class='LI-simple-link'
+    href='https://www.linkedin.com/in/devhanza/?trk=profile-badge'
+  >
+    Hansana Prabath
+  </a>
+</div>
+
+<script
+  type='text/javascript'
+  src='https://platform.linkedin.com/badges/js/profile.js'
+  async
+  defer
+></script>
+
+<hr>
+
+This project was created by using MEAN Stack: 
 - [MongoDB](https://www.mongodb.com)
 - [Express.js](https://expressjs.com)
 - [Angular CLI](https://github.com/angular/angular-cli)
 - [Node.js](https://nodejs.org)
+
+Inspired by [CS50x](https://cs50.harvard.edu/x/2024/).
