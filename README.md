@@ -1,5 +1,4 @@
-# SchoolNotes
-
+<h1 align=center>SchoolNotes</h1>
 <p align="center">
   <a href="https://hansana.is-a.dev">
     <img src="https://skillicons.dev/icons?i=mongodb,express,angular,nodejs" alt="MEAN Stack Technologies" />
