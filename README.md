@@ -29,8 +29,17 @@ Additional highlights:
 
 ## How to Use
 
-Watch this quick video to see how to use SchoolNotes:  
-[![Watch the video](https://img.youtube.com/vi/placeholder/hqdefault.jpg)](https://youtu.be/)
+Watch this quick video tutorial to see how to use SchoolNotes:
+[![Watch the video](https://img.youtube.com/rSMf6H6LJ7o/placeholder/hqdefault.jpg)](https://youtu.be/rSMf6H6LJ7o)
+
+### Project Structure
+
+The project folder consists of two main directories:
+
+- **`client`**: The front-end application built using [Angular](https://angular.dev/).
+- **`server`**: The back-end REST API built with [Express.js](https://expressjs.com/), [Node.js](https://nodejs.org/en), and [MongoDB](https://mongodb.com/). The server uses the MongoDB native driver for efficient database operations.
+
+The `server` acts as the REST API for the `client`. For the application to function properly, both the `client` and `server` need to run simultaneously. While a concurrent package is used for local development convenience, it is important to host each part separately in a production environment for better performance and scalability. Check out the [How to Host in Production](#how-to-host-this-on-production-environment) section for detailed guidance.
 
 ## How to Run It Locally
 
@@ -56,7 +65,7 @@ Follow these steps to set up and run the application on your computer:
    MDB_URL=mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority&appName=yourAppName
    ```
 
-### Running the Application
+### Run in on your computer
 
 1. Open your terminal and execute the following commands (this process may take 5-15 minutes):
    ```bash
@@ -66,8 +75,34 @@ Follow these steps to set up and run the application on your computer:
    ```
 2. Once the setup is complete, a link will appear in the terminal. Open this link in your browser to use the application.
 3. To stop the application, press `CTRL + C` in the terminal.
+4. Done! ✅
 
-### Done! ✅
+## How to Host This on Production Environment
+
+To host SchoolNotes in a production environment, follow these steps:
+
+1. **Host the Client**:
+   - Build the Angular application using the command:
+     ```bash
+     cd client
+     ng build
+     ```
+   - Serve the built files using a web server like Nginx or Apache.
+
+2. **Host the Server**:
+   - Use a Node.js process manager like PM2 to manage the server:
+     ```bash
+     cd server
+     pm2 start server.js
+     ```
+   - Ensure the server is accessible via a public IP or domain name.
+
+3. **Database Configuration**:
+   - Use a managed MongoDB service like [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) for scalable and secure database hosting.
+
+4. **Environment Variables**:
+   - Securely configure the server's environment variables (e.g., `MDB_URL`).
+
 
 ## Need Help?
 
