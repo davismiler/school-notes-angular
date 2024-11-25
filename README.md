@@ -10,7 +10,6 @@
 ![SchoolNotes Screenshot](https://github.com/user-attachments/assets/466fca57-3a58-41c4-b645-ba91f6a5b81f)
 
 ## Features
-
 With SchoolNotes, you can:
 - Create notes
 - Read notes
@@ -28,12 +27,10 @@ Additional highlights:
 - Faster loading times
 
 ## How to Use
-
 Watch this quick video tutorial to see how to use SchoolNotes:
 [![Watch the video](https://img.youtube.com/rSMf6H6LJ7o/placeholder/hqdefault.jpg)](https://youtu.be/rSMf6H6LJ7o)
 
 ### Project Structure
-
 The project folder consists of two main directories:
 
 - **`client`**: The front-end application built using [Angular](https://angular.dev/).
@@ -42,11 +39,9 @@ The project folder consists of two main directories:
 The `server` acts as the REST API for the `client`. For the application to function properly, both the `client` and `server` need to run simultaneously. While a concurrent package is used for local development convenience, it is important to host each part separately in a production environment for better performance and scalability. Check out the [How to Host in Production](#how-to-host-this-on-production-environment) section for detailed guidance.
 
 ## How to Run It Locally
-
 Follow these steps to set up and run the application on your computer:
 
 ### Prerequisites
-
 1. Install the following software:
    - [Git](https://git-scm.com/downloads)
    - [Node.js](https://nodejs.org/en)
@@ -56,7 +51,6 @@ Follow these steps to set up and run the application on your computer:
    [How to Create a MongoDB Cluster](https://youtu.be/VkXvVOb99g0)
 
 ### Setup
-
 1. Navigate to the `../school-note-angular/server` folder.
 2. Rename the `.example.env` file to `.env`.
 3. Update the `MDB_URL` field in the `.env` file with your MongoDB URI. Example:
@@ -66,7 +60,6 @@ Follow these steps to set up and run the application on your computer:
    ```
 
 ### Run in on your computer
-
 1. Open your terminal and execute the following commands (this process may take 5-15 minutes):
    ```bash
    git clone https://github.com/DevHanza/school-notes-angular.git
@@ -78,7 +71,6 @@ Follow these steps to set up and run the application on your computer:
 4. Done! ✅
 
 ## How to Host This on Production Environment
-
 To host SchoolNotes in a production environment, follow these steps:
 
 1. **Host the Client**:
@@ -105,7 +97,6 @@ To host SchoolNotes in a production environment, follow these steps:
 
 
 ## Need Help?
-
 If you encounter any issues, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/devhanza/).
 
 ---
