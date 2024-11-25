@@ -28,7 +28,7 @@ Additional highlights:
 
 ## How to Use
 Watch this quick video tutorial to see how to use SchoolNotes:
-[![Watch the video](https://img.youtube.com/rSMf6H6LJ7o/placeholder/hqdefault.jpg)](https://youtu.be/rSMf6H6LJ7o)
+[Watch the video](https://youtu.be/m-1DHXa-0FI)
 
 ### Project Structure
 The project folder consists of two main directories:
