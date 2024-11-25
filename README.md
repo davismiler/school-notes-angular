@@ -1,97 +1,86 @@
-<h1 align="center">SchoolNotes</h1>
+# SchoolNotes
 
 <p align="center">
   <a href="https://hansana.is-a.dev">
-    <img src="https://skillicons.dev/icons?i=mongodb,express,angular,nodejs" />
+    <img src="https://skillicons.dev/icons?i=mongodb,express,angular,nodejs" alt="MEAN Stack Technologies" />
   </a>
 </p>
 
-<h3 align="center">A Simple Note Taking Application for Students.</h3>
+<h3 align="center">A Simple Note-Taking Application for Students</h3>
 
-![image](https://github.com/user-attachments/assets/466fca57-3a58-41c4-b645-ba91f6a5b81f)
+![SchoolNotes Screenshot](https://github.com/user-attachments/assets/466fca57-3a58-41c4-b645-ba91f6a5b81f)
 
-## Features 
-Using this application you can,
-- Create Notes
-- Read Notes
-- Edit Notes
-- Delete Notes
-- Categorize Notes
-- Search Notes
-- Add New Categories
-- Edit Category Settings
+## Features
 
-Also, it is,
+With SchoolNotes, you can:
+- Create notes
+- Read notes
+- Edit notes
+- Delete notes
+- Categorize notes
+- Search notes
+- Add new categories
+- Edit category settings
+
+Additional highlights:
 - Mobile-friendly design
-- Scalability with MongoDB Database
-- Super fast note searching
+- Scalability with a MongoDB database
+- Super-fast note searching
 - Faster loading times
 
-## How to Use?
-Here is a quick video of how you can use this application:
-- Video: [https://youtube.com/](https://youtu.be/)
+## How to Use
 
-## How to Run it on your Computer?
+Watch this quick video to see how to use SchoolNotes:  
+[![Watch the video](https://img.youtube.com/vi/placeholder/hqdefault.jpg)](https://youtu.be/)
 
-🔹 First, install the following softwares on your computer:
-- [Git](https://git-scm.com/downloads)
-- [Node.js](https://nodejs.org/en)
-- [Mongosh](https://www.mongodb.com/try/download/shell)
+## How to Run It Locally
 
-🔹 Then, Create a FREE MongoDB Cluster by watching this video: [https://youtu.be/VkXvVOb99g0](https://youtu.be/VkXvVOb99g0)
+Follow these steps to set up and run the application on your computer:
 
-🔹 Then go to the `../school-note-angular/server` folder and rename the `.example.env` file to `.env`.
+### Prerequisites
 
-🔹 Update the `MDB_URL`  with your MongoDB URI as the following example (no commas included):
-```
-MDB_URL = mongodb+srv://username:password@something.1yadd.mongodb.net/?retryWrites=true&w=majority&appName=something
- ```
+1. Install the following software:
+   - [Git](https://git-scm.com/downloads)
+   - [Node.js](https://nodejs.org/en)
+   - [Mongosh](https://www.mongodb.com/try/download/shell)
 
-🔹 Now, Open your terminal and type the following commands:
-(_This might take 5-15 minutes.._)
-```
-git clone https://github.com/DevHanza/school-notes-angular.git
-cd school-notes-angular
-npm run start
-```
-🔹 Now wait until a link appears on your terminal.
+2. Create a free MongoDB Cluster by following this tutorial:  
+   [How to Create a MongoDB Cluster](https://youtu.be/VkXvVOb99g0)
 
-🔹 Open it from your browser to use the application.
+### Setup
 
-🔹 Done. ✅ (Hit `CTRL + C` to stop the application.)
+1. Navigate to the `../school-note-angular/server` folder.
+2. Rename the `.example.env` file to `.env`.
+3. Update the `MDB_URL` field in the `.env` file with your MongoDB URI. Example:
 
-## Got a problem?
-Feel free to contact me on [Linkedin](https://www.linkedin.com/in/devhanza/).
-<div
-  class='LI-profile-badge'
-  data-version='v1'
-  data-size='medium'
-  data-locale='en_US'
-  data-type='horizontal'
-  data-theme='dark'
-  data-vanity='devhanza'
->
-  <a
-    class='LI-simple-link'
-    href='https://www.linkedin.com/in/devhanza/?trk=profile-badge'
-  >
-    Hansana Prabath
-  </a>
-</div>
+   ```env
+   MDB_URL=mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority&appName=yourAppName
+   ```
 
-<script
-  type='text/javascript'
-  src='https://platform.linkedin.com/badges/js/profile.js'
-  async
-  defer
-></script>
+### Running the Application
 
-<hr>
+1. Open your terminal and execute the following commands (this process may take 5-15 minutes):
+   ```bash
+   git clone https://github.com/DevHanza/school-notes-angular.git
+   cd school-notes-angular
+   npm run start
+   ```
+2. Once the setup is complete, a link will appear in the terminal. Open this link in your browser to use the application.
+3. To stop the application, press `CTRL + C` in the terminal.
 
-This project was created by using MEAN Stack: 
+### Done! ✅
+
+## Need Help?
+
+If you encounter any issues, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/devhanza/).
+
+---
+
+SchoolNotes is built using the MEAN stack:
 - [MongoDB](https://www.mongodb.com)
 - [Express.js](https://expressjs.com)
 - [Angular CLI](https://github.com/angular/angular-cli)
 - [Node.js](https://nodejs.org)
 
-Inspired by [CS50x](https://cs50.harvard.edu/x/2024/).
+### Inspiration
+This project was inspired by [CS50x](https://cs50.harvard.edu/x/2024/).
