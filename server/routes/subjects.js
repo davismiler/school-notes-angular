@@ -12,14 +12,27 @@ router
 
   // Get All the Subjects
   .get(async (req, res) => {
-    const result = await subjectsCollection.find({}).toArray();
-    res.json(result);
+    try {
+      const result = await subjectsCollection.find({}).toArray();
+      res.json(result);
+    } catch (error) {
+      console.error("Error fetching subjects:", error);
+      res.status(500).json({ error: "Failed to fetch subjects" });
+    }
   })
 
   // Create a new subject
   .post(async (req, res) => {
-    const result = await subjectsCollection.insertOne(req.body);
-    res.json(result);
+    try {
+      if (!req.body.name || !req.body.color) {
+        return res.status(400).json({ error: "Name and color are required" });
+      }
+      const result = await subjectsCollection.insertOne(req.body);
+      res.status(201).json(result);
+    } catch (error) {
+      console.error("Error creating subject:", error);
+      res.status(500).json({ error: "Failed to create subject" });
+    }
   });
 
 router
@@ -27,28 +40,49 @@ router
 
   // Update Subject By ID
   .patch(async (req, res) => {
-    const subjectObjectId = req.params.id;
-    const filter = { _id: new ObjectId(subjectObjectId) };
+    try {
+      const subjectObjectId = req.params.id;
+      const filter = { _id: new ObjectId(subjectObjectId) };
 
-    const result = await subjectsCollection.updateOne(filter, {
-      $set: {
-        name: req.body.name,
-        color: req.body.color,
-      },
-    });
-    res.json({ updated: req.body });
+      if (!req.body.name || !req.body.color) {
+        return res.status(400).json({ error: "Name and color are required" });
+      }
 
-    console.log(result);
+      const result = await subjectsCollection.updateOne(filter, {
+        $set: {
+          name: req.body.name,
+          color: req.body.color,
+        },
+      });
+
+      if (result.matchedCount === 0) {
+        return res.status(404).json({ error: "Subject not found" });
+      }
+
+      res.json({ updated: req.body });
+    } catch (error) {
+      console.error("Error updating subject:", error);
+      res.status(500).json({ error: "Failed to update subject" });
+    }
   })
 
   // Delete Subject by ID
   .delete(async (req, res) => {
-    const subjectObjectId = req.params.id;
-    const result = await subjectsCollection.deleteOne({
-      _id: new ObjectId(subjectObjectId),
-    });
-    res.json({ deleted: true });
-    // console.log(result);
+    try {
+      const subjectObjectId = req.params.id;
+      const result = await subjectsCollection.deleteOne({
+        _id: new ObjectId(subjectObjectId),
+      });
+
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ error: "Subject not found" });
+      }
+
+      res.json({ deleted: true });
+    } catch (error) {
+      console.error("Error deleting subject:", error);
+      res.status(500).json({ error: "Failed to delete subject" });
+    }
   });
 
 module.exports = router;

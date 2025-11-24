@@ -7,7 +7,7 @@
   },
   "author": "davismiler",
   "license": "ISC",
-  "description": "",
+  "description": "Express.js REST API server for SchoolNotes application",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.1",

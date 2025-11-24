@@ -24,23 +24,31 @@ export class NewNoteComponent implements OnInit {
 
   constructor(private router: Router, private noteService: noteService) {}
 
-  getNotesCount() {
-    this.noteService.getNotesCount().then((c) => {
-      this.notesCount = c.count;
-    });
+  async getNotesCount() {
+    try {
+      const count = await this.noteService.getNotesCount();
+      this.notesCount = count.count;
+    } catch (error) {
+      console.error("Error getting notes count:", error);
+      this.notesCount = 0;
+    }
   }
 
   // Get all subject in select menu
-  getAllSubjects() {
-    this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
-      this.subjectList = subject;
-    });
+  async getAllSubjects() {
+    try {
+      const subjects = await this.noteService.getAllSubjects();
+      this.subjectList = subjects;
+    } catch (error) {
+      console.error("Error getting subjects:", error);
+      this.subjectList = [];
+    }
   }
 
-  ngOnInit(): void {
-    this.getAllSubjects();
+  async ngOnInit(): Promise<void> {
+    await this.getAllSubjects();
     // Get Notes Count on load
-    this.getNotesCount();
+    await this.getNotesCount();
   }
 
   // Add a New Note (Reactive Form)
@@ -48,9 +56,15 @@ export class NewNoteComponent implements OnInit {
   title = new FormControl("");
   content = new FormControl("");
 
-  onNewNoteSubmit() {
+  async onNewNoteSubmit() {
+    // Validate form
+    if (!this.title.value || !this.content.value || !this.subjectName.value) {
+      alert("Please fill in all fields");
+      return;
+    }
+
     // Get Notes Count
-    this.getNotesCount();
+    await this.getNotesCount();
 
     const now = new Date();
 
@@ -58,16 +72,25 @@ export class NewNoteComponent implements OnInit {
       return subject.name === this.subjectName.value;
     });
 
+    if (!chosenSubject) {
+      alert("Please select a valid subject");
+      return;
+    }
+
     const noteObj: any = {
       ID: this.notesCount + 1,
-      subject_id: chosenSubject?._id ?? 0,
-      title: this.title.value ?? "",
-      content: this.content.value ?? "",
+      subject_id: chosenSubject._id,
+      title: this.title.value,
+      content: this.content.value,
       createdAt: String(now),
     };
 
-    this.noteService.addNote(noteObj);
-
-    this.router.navigate(["/"]);
+    try {
+      await this.noteService.addNote(noteObj);
+      this.router.navigate(["/"]);
+    } catch (error) {
+      console.error("Error adding note:", error);
+      alert("Failed to add note. Please try again.");
+    }
   }
 }

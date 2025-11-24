@@ -1,115 +1,182 @@
 import { Injectable } from "@angular/core";
 import { NotecardInterface } from "../interfaces/notecard-interface";
 import { SubjectInterface } from "../interfaces/subject-interface";
-import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class noteService {
-  API_URL = "http://localhost:8080/api/v1";
-  constructor(private http: HttpClient) {}
+  private API_URL = environment.apiUrl;
+  
+  constructor() {}
 
   async getAllNotes(): Promise<NotecardInterface[]> {
-    const notes = await fetch(`${this.API_URL}/notes`);
-    return (await notes.json()) ?? [];
+    try {
+      const response = await fetch(`${this.API_URL}/notes`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return (await response.json()) ?? [];
+    } catch (error) {
+      console.error('Error fetching notes:', error);
+      return [];
+    }
   }
 
   async getNoteById(id: Number): Promise<NotecardInterface[]> {
-    const notes = await fetch(`${this.API_URL}/notes/${id}`);
-    return (await notes.json()) ?? [];
+    try {
+      const response = await fetch(`${this.API_URL}/notes/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return (await response.json()) ?? [];
+    } catch (error) {
+      console.error('Error fetching note by ID:', error);
+      return [];
+    }
   }
 
-  async deleteNoteById(id: Number): Promise<any> {
-    console.log(typeof id);
-
-    const response = await fetch(`${this.API_URL}/notes/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    return (await response.json()) ?? [];
+  async deleteNoteById(id: string | number): Promise<any> {
+    try {
+      const response = await fetch(`${this.API_URL}/notes/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return (await response.json()) ?? [];
+    } catch (error) {
+      console.error('Error deleting note:', error);
+      throw error;
+    }
   }
 
   async updateNote(obj: any): Promise<void> {
-    await fetch(`${this.API_URL}/notes/${obj.ID}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    })
-      // .then((data) => console.log(data))
-      .catch((error) => console.error("error:", error));
+    try {
+      const response = await fetch(`${this.API_URL}/notes/${obj.ID}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error updating note:", error);
+      throw error;
+    }
   }
 
   async getNotesCount(): Promise<{ count: number }> {
-    const count = await fetch(`${this.API_URL}/notes?count=true`);
-    return (await count.json()) ?? [];
+    try {
+      const response = await fetch(`${this.API_URL}/notes?count=true`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return (await response.json()) ?? { count: 0 };
+    } catch (error) {
+      console.error('Error fetching notes count:', error);
+      return { count: 0 };
+    }
   }
 
   async addNote(noteObj: NotecardInterface): Promise<void> {
-
-    await fetch(`${this.API_URL}/notes/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(noteObj),
-    })
-      // .then((data) => console.log(data))
-      .catch((error) => console.error("error:", error));
+    try {
+      const response = await fetch(`${this.API_URL}/notes/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(noteObj),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error adding note:", error);
+      throw error;
+    }
   }
 
   // Note Subject Services
   async getAllSubjects(): Promise<SubjectInterface[]> {
-    const subjectsResponse = await fetch(`${this.API_URL}/subjects`);
-    const subjects = (await subjectsResponse.json()) ?? [];
+    try {
+      const response = await fetch(`${this.API_URL}/subjects`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const subjects = (await response.json()) ?? [];
 
-    // Add the isEditing property to each object
-    const updatedSubjects = subjects.map((subject: SubjectInterface) => ({
-      ...subject,
-      isEditing: false,
-    }));
+      // Add the isEditing property to each object
+      const updatedSubjects = subjects.map((subject: SubjectInterface) => ({
+        ...subject,
+        isEditing: false,
+      }));
 
-    return updatedSubjects;
+      return updatedSubjects;
+    } catch (error) {
+      console.error('Error fetching subjects:', error);
+      return [];
+    }
   }
 
   async addSubject(subjectObj: { name: string; color: string }): Promise<void> {
-    await fetch(`${this.API_URL}/subjects`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(subjectObj),
-    });
+    try {
+      const response = await fetch(`${this.API_URL}/subjects`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(subjectObj),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error adding subject:", error);
+      throw error;
+    }
   }
 
-  async updateSubject(subjectObj: SubjectInterface) {
-    console.log(subjectObj);
-
-    const subjectObjId = subjectObj._id;
-
-    await fetch(`${this.API_URL}/subjects/${subjectObjId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(subjectObj),
-    })
-      // .then((data) => console.log(data))
-      .catch((error) => console.error("error:", error));
-    // console.log(subjectObj);
+  async updateSubject(subjectObj: SubjectInterface): Promise<void> {
+    try {
+      const subjectObjId = subjectObj._id;
+      const response = await fetch(`${this.API_URL}/subjects/${subjectObjId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(subjectObj),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error updating subject:", error);
+      throw error;
+    }
   }
 
   async deleteSubjectById(id: number): Promise<void> {
-    await fetch(`${this.API_URL}/subjects/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const response = await fetch(`${this.API_URL}/subjects/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error deleting subject:", error);
+      throw error;
+    }
   }
 }

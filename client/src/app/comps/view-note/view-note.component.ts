@@ -26,26 +26,28 @@ export class ViewNoteComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.noteId = Number(this.route.snapshot.params["id"]);
 
-    this.noteService
-      .getNoteById(this.noteId)
-      .then((note: NotecardInterface[]) => {
-        this.note = note[0];
-      });
+    try {
+      const notes = await this.noteService.getNoteById(this.noteId);
+      this.note = notes[0];
+    } catch (error) {
+      console.error("Error fetching note:", error);
+    }
   }
 
-  deleteNote() {
-    const confirmDelete = confirm(`Are you sure you wanna delete this note?`);
+  async deleteNote(): Promise<void> {
+    const confirmDelete = confirm(`Are you sure you want to delete this note?`);
 
-    if (confirmDelete) {
-      const noteID = this.note?._id;
-
-      this.noteService.deleteNoteById(noteID).then((note: unknown) => {});
-      this.router.navigate(["/"]);
-    } else {
-      console.log("Canceled! Note was not deleted.");
+    if (confirmDelete && this.note?._id) {
+      try {
+        await this.noteService.deleteNoteById(this.note._id);
+        this.router.navigate(["/"]);
+      } catch (error) {
+        console.error("Error deleting note:", error);
+        alert("Failed to delete note. Please try again.");
+      }
     }
   }
 }

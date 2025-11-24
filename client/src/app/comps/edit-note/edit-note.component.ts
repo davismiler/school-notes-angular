@@ -38,20 +38,37 @@ export class EditNoteComponent implements OnInit {
   title = new FormControl("");
   content = new FormControl("");
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     // Get All Subjects
-    this.noteService.getAllSubjects().then((subject: SubjectInterface[]) => {
-      this.subjectList = subject;
-    });
+    try {
+      const subjects = await this.noteService.getAllSubjects();
+      this.subjectList = subjects;
+    } catch (error) {
+      console.error("Error getting subjects:", error);
+      this.subjectList = [];
+    }
 
     // Load the Note Data to Edit
-    this.title.setValue(String(this.note?.title));
-    this.content.setValue(String(this.note?.content));
-    this.subject.setValue(String(this.note.subject._id));
+    if (this.note) {
+      this.title.setValue(String(this.note?.title ?? ""));
+      this.content.setValue(String(this.note?.content ?? ""));
+      this.subject.setValue(String(this.note.subject?._id ?? ""));
+    }
   }
 
   // Update Note
   async onUpdateNoteSubmit() {
+    // Validate form
+    if (!this.title.value || !this.content.value || !this.subject.value) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    if (!this.note) {
+      alert("Note data is missing");
+      return;
+    }
+
     const updateNoteObj = {
       ID: this.note.ID,
       title: this.title.value,
@@ -60,8 +77,12 @@ export class EditNoteComponent implements OnInit {
       subjectObjectId: this.subject.value,
     };
 
-    await this.noteService.updateNote(updateNoteObj);
-
-    this.router.navigate([`/note/${this.note.ID}`]);
+    try {
+      await this.noteService.updateNote(updateNoteObj);
+      this.router.navigate([`/note/${this.note.ID}`]);
+    } catch (error) {
+      console.error("Error updating note:", error);
+      alert("Failed to update note. Please try again.");
+    }
   }
 }
