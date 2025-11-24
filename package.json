@@ -9,7 +9,7 @@
     "install:everything": "npm run install:client && npm run install:server",
     "start": "npm run install:everything && concurrently \"cd server && npm start\" \"cd client && npm start\""
   },
-  "author": "DevHanza",
+  "author": "davismiler",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^9.1.0"

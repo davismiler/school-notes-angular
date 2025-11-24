@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node --watch --env-file .env server.js"
   },
-  "author": "",
+  "author": "davismiler",
   "license": "ISC",
   "description": "",
   "dependencies": {

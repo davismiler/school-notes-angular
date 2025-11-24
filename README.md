@@ -1,6 +1,6 @@
 <h1 align=center>SchoolNotes</h1>
 <p align="center">
-  <a href="https://hansana.is-a.dev">
+  <a href="https://github.com/davismiler">
     <img src="https://skillicons.dev/icons?i=mongodb,express,angular,nodejs" alt="MEAN Stack Technologies" />
   </a>
 </p>
@@ -62,7 +62,7 @@ Follow these steps to set up and run the application on your computer:
 ### Run in on your computer
 1. Open your terminal and execute the following commands (this process may take 5-15 minutes):
    ```bash
-   git clone https://github.com/DevHanza/school-notes-angular.git
+   git clone https://github.com/davismiler/school-notes-angular.git
    cd school-notes-angular
    npm run start
    ```
@@ -97,7 +97,7 @@ To host SchoolNotes in a production environment, follow these steps:
 
 
 ## Need Help?
-If you encounter any issues, feel free to contact me on [LinkedIn](https://www.linkedin.com/in/devhanza/).
+If you encounter any issues, feel free to contact me on [GitHub](https://github.com/davismiler).
 
 ---
 
